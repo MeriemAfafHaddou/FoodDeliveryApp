@@ -20,13 +20,12 @@ class FragmentHome : Fragment(), RestaurantClickListener {
         val myRecyclerView = view.findViewById(R.id.recyclerViewRestaurant) as RecyclerView
         val layoutManager = LinearLayoutManager(context)
         myRecyclerView.layoutManager=layoutManager
-        val myAdapter=AdapterRestaurant(loadData(),requireContext(), this)
+        val myAdapter= loadData()?.let { AdapterRestaurant(it,requireContext(), this) }
         myRecyclerView.adapter=myAdapter
         return view
     }
 
-    fun loadData():List<Restaurant> {
-        val data= mutableListOf<Restaurant>()
+    fun loadData(): List<Restaurant>? {
         AppDatabase.buildDatabase(requireActivity())?.getRestaurantDao()?.addRestaurant(Restaurant(
             1,
             "Mega Pizza",
@@ -43,8 +42,8 @@ class FragmentHome : Fragment(), RestaurantClickListener {
         )
         )
         AppDatabase.buildDatabase(requireActivity())?.getRestaurantDao()?.addRestaurant(Restaurant(
-            1,
-            "Mega Pizza",
+            2,
+            "O tacos",
             "Fast Food",
             R.drawable.megapizza,
             "Elbiar",
@@ -58,8 +57,8 @@ class FragmentHome : Fragment(), RestaurantClickListener {
         )
         )
         AppDatabase.buildDatabase(requireActivity())?.getRestaurantDao()?.addRestaurant(Restaurant(
-            1,
-            "Mega Pizza",
+            3,
+            "Chicken Street",
             "Fast Food",
             R.drawable.megapizza,
             "Elbiar",
@@ -73,11 +72,11 @@ class FragmentHome : Fragment(), RestaurantClickListener {
         )
         )
 
-        return data
+        return AppDatabase.buildDatabase(requireActivity())?.getRestaurantDao()?.getRestaurants()
     }
 
     override fun onRestaurantClickListener(data: Restaurant) {
-        val bundle= bundleOf("Restaurant" to data.id)
+        val bundle= bundleOf("Restaurant" to data.id_restau)
         this.findNavController().navigate(R.id.action_Restaurant_to_menu, bundle)
     }
 }

@@ -3,8 +3,8 @@ import androidx.room.*
 
 @Dao
 interface MenuDao {
-    @Query("select * from menu where id_restaurant=:id_restaurant")
-    fun getMenuByRestaurant(id_restaurant:Int):Menu
+    @Query("select * from menu where restaurant=:id_restaurant")
+    fun getMenuByRestaurant(id_restaurant:Int):List<Menu>
     @Insert
     fun addMenu(vararg menu:Menu)
     @Update

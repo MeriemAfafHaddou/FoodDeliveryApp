@@ -26,13 +26,13 @@ class FragmentMenu : Fragment(), MenuClickListener
             val myRecyclerView = view.findViewById(R.id.recyclerViewMenu) as RecyclerView
             val layoutManager = LinearLayoutManager(context)
             myRecyclerView.layoutManager=layoutManager
-            val myAdapter=AdapterMenu(loadData(),requireContext(), this)
+            val myAdapter= loadData()?.let { AdapterMenu(it,requireContext(), this) }
             myRecyclerView.adapter=myAdapter
             // Inflate the layout for this fragment
             return view
         }
 
-        fun loadData():List<Menu> {
+        fun loadData(): List<Menu>? {
             val data = mutableListOf<Menu>()
             AppDatabase.buildDatabase(requireActivity())?.getMenuDao()?.addMenu(
                 Menu(
@@ -44,7 +44,27 @@ class FragmentMenu : Fragment(), MenuClickListener
                 4.6,
                 R.drawable.pizza,1
             ))
-            return data
+            AppDatabase.buildDatabase(requireActivity())?.getMenuDao()?.addMenu(
+                Menu(
+                    2,
+                    "Pizza Marguarita",
+                    350,
+                    "Tomato Sauce, Olive, Mozarella, Salad.",
+                    200,
+                    4.6,
+                    R.drawable.pizza,1
+                ))
+            AppDatabase.buildDatabase(requireActivity())?.getMenuDao()?.addMenu(
+                Menu(
+                    3,
+                    "Pizza Margherita",
+                    350,
+                    "Tomato Sauce, Olive, Mozarella, Salad.",
+                    200,
+                    4.6,
+                    R.drawable.pizza,2
+                ))
+            return AppDatabase.buildDatabase(requireActivity())?.getMenuDao()?.getMenuByRestaurant(1)
         }
 
         override fun onMenuClickListener(data: Menu) {
