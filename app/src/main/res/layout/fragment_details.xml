@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentDetails">
+
+    <ImageView
+        android:id="@+id/details_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/pizza"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/details_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Pizza Marguerita"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_image" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Ingredients"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_cal" />
+
+    <TextView
+        android:id="@+id/details_ingreds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/details_cal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="8dp"
+        android:text="200 Kcal"
+        app:layout_constraintStart_toStartOf="@+id/details_name"
+        app:layout_constraintTop_toBottomOf="@+id/details_name" />
+
+    <TextView
+        android:id="@+id/details_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="4,6"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/details_cal" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/star"
+        app:layout_constraintBottom_toBottomOf="@+id/details_rating"
+        app:layout_constraintEnd_toEndOf="@+id/details_name"
+        app:layout_constraintTop_toTopOf="@+id/details_cal" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Size"
+        android:textColor="#000000"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/details_ingreds"
+        app:layout_constraintTop_toBottomOf="@+id/details_ingreds" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
+        android:checkedButton="@+id/medium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/textView8">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:padding="8dp"
+            android:text="Medium"
+            android:id="@+id/medium"
+            android:textColor="@drawable/radio_text_color"
+            android:textSize="14dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/radio_selector"
+            android:id="@+id/large"
+            android:button="@android:color/transparent"
+            android:padding="8dp"
+            android:text="Large"
+            android:textColor="@drawable/radio_text_color"
+            android:textSize="14dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/sub"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/borderradius"
+        android:backgroundTint="#ffDCDCDC"
+        android:color="#000000"
+        android:text="-"
+        style="?android:attr/borderlessButtonStyle"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/borderradius"
+        android:backgroundTint="#ffFB8500"
+        android:text="+"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="#ffffff"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sub"
+        app:layout_constraintStart_toEndOf="@+id/sub"
+        app:layout_constraintTop_toTopOf="@+id/sub" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="18dp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/sub"
+        app:layout_constraintEnd_toStartOf="@+id/add"
+        app:layout_constraintStart_toEndOf="@+id/sub"
+        app:layout_constraintTop_toTopOf="@+id/sub" />
+
+    <Button
+        android:id="@+id/addToCart"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/borderradius"
+        android:backgroundTint="#FFFFB703"
+        android:text="Add to cart >"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
