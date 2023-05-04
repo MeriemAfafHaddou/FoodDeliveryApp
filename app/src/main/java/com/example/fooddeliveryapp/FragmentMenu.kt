@@ -34,37 +34,19 @@ class FragmentMenu : Fragment(), MenuClickListener
 
         fun loadData(): List<Menu>? {
             val data = mutableListOf<Menu>()
-            AppDatabase.buildDatabase(requireActivity())?.getMenuDao()?.addMenu(
-                Menu(
-                1,
-                "Pizza Marguarita",
-                350,
-                "Tomato Sauce, Olive, Mozarella, Salad.",
-                200,
-                4.6,
-                R.drawable.pizza,1
-            ))
-            AppDatabase.buildDatabase(requireActivity())?.getMenuDao()?.addMenu(
-                Menu(
-                    2,
-                    "Pizza Marguarita",
-                    350,
-                    "Tomato Sauce, Olive, Mozarella, Salad.",
-                    200,
-                    4.6,
-                    R.drawable.pizza,1
-                ))
-            AppDatabase.buildDatabase(requireActivity())?.getMenuDao()?.addMenu(
-                Menu(
-                    3,
-                    "Pizza Margherita",
-                    350,
-                    "Tomato Sauce, Olive, Mozarella, Salad.",
-                    200,
-                    4.6,
-                    R.drawable.pizza,2
-                ))
-            return AppDatabase.buildDatabase(requireActivity())?.getMenuDao()?.getMenuByRestaurant(1)
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+            data.add(Menu(1, "Pizza Marguarita",350,"Tomato Sauce, Olive, Mozarella, Salad.", 200, 4.6, R.drawable.pizza,1))
+
+            return data
         }
 
         override fun onMenuClickListener(data: Menu) {

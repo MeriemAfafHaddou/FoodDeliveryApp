@@ -1,11 +1,6 @@
 package com.example.fooddeliveryapp
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity(tableName ="restaurants" )
 data class Restaurant(
-    @PrimaryKey
-    val id_restau: Int,
+    val id: Int,
     val name: String,
     val type: String,
     val img: Int,

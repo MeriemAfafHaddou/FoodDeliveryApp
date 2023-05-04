@@ -21,7 +21,8 @@ class FragmentDetails : Fragment() {
             "Tomato, Cheese, Olives",
             200,
             4.6,
-            R.drawable.pizza
+            R.drawable.pizza,
+            1
         )
         binding.detailsImage.setImageResource(menuItem.img)
         binding.detailsName.text=menuItem.name
@@ -40,6 +41,7 @@ class FragmentDetails : Fragment() {
             if(q<1) q=1
             binding.quantity.text=q.toString()
         }
+        var id_item:Int=3
         binding.addToCart.setOnClickListener{
             val selectedId=binding.radioGroup.checkedRadioButtonId
             var size:String = "Medium"
@@ -52,10 +54,27 @@ class FragmentDetails : Fragment() {
             if(size=="Large"){
                 total+=200*q
             }
-            val id_item:Int=1
-            val cartItem=CartItem(id_item,menuItem,size, q, total)
-            Cart.addToCart(cartItem)
-            Toast.makeText(activity,"Order added to cart", Toast.LENGTH_SHORT).show()
+            val order= AppDatabase.buildDatabase(requireActivity())!!.getCartDao().getCartItems()
+
+            try{
+                if(order.last().restaurant_id==menuItem.restaurant){
+                    id_item=order.last().id+1
+                    AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.addToCart(
+                        CartItem(id_item,menuItem.restaurant,menuItem.name,menuItem.price,menuItem.ingredients,menuItem.cal,menuItem.rating,menuItem.img,size, q, total))
+                    Toast.makeText(activity,"Order added to cart", Toast.LENGTH_SHORT).show()
+
+                }else {
+                    Toast.makeText(
+                        activity,
+                        "The orders have to be from the same restaurant!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }catch(e:NoSuchElementException){
+                id_item=1
+                AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.addToCart(
+                    CartItem(id_item,menuItem.restaurant,menuItem.name,menuItem.price,menuItem.ingredients,menuItem.cal,menuItem.rating,menuItem.img,size, q, total))
+            }
         }
         return binding.root
     }

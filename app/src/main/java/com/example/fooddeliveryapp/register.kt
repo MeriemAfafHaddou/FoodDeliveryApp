@@ -21,7 +21,6 @@ class register : AppCompatActivity() {
             val city=findViewById<EditText>(R.id.city).text.toString()
             val ad=findViewById<EditText>(R.id.ad).text.toString()
             val user=User(id, name, email, pwd, phone, city, ad)
-            AppDatabase.buildDatabase(this)?.getUserDao()?.addUsers(user)
             val intent = Intent(this,MainActivity::class.java)
             intent.putExtra("Menu","Mega Pizza")
         }

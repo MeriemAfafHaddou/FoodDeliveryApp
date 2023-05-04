@@ -31,10 +31,27 @@
         android:id="@+id/fragmentCart"
         android:name="com.example.fooddeliveryapp.FragmentCart"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_fragmentCart_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_fragmentCart_to_fragmentConfirm"
+            app:destination="@id/fragmentConfirm" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
         android:name="com.example.fooddeliveryapp.FragmentDetails"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <activity
+        android:id="@+id/login"
+        android:name="com.example.fooddeliveryapp.login"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/fragmentConfirm"
+        android:name="com.example.fooddeliveryapp.FragmentDelivery"
+        android:label="fragment_confirm"
+        tools:layout="@layout/fragment_delivery" />
 </navigation>

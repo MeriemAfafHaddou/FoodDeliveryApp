@@ -26,57 +26,27 @@ class FragmentHome : Fragment(), RestaurantClickListener {
     }
 
     fun loadData(): List<Restaurant>? {
-        AppDatabase.buildDatabase(requireActivity())?.getRestaurantDao()?.addRestaurant(Restaurant(
-            1,
-            "Mega Pizza",
-            "Fast Food",
-            R.drawable.megapizza,
-            "Elbiar",
-            "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9",
-            "https://goo.gl/maps/Y68Z4dKBGjYkeDC59",
-            4.6,
-            "https://www.facebook.com/megapizzaelbiar/",
-            "https://www.facebook.com/megapizzaelbiar/",
-            "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=",
-            "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",
-        )
-        )
-        AppDatabase.buildDatabase(requireActivity())?.getRestaurantDao()?.addRestaurant(Restaurant(
-            2,
-            "O tacos",
-            "Fast Food",
-            R.drawable.megapizza,
-            "Elbiar",
-            "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9",
-            "https://goo.gl/maps/Y68Z4dKBGjYkeDC59",
-            4.6,
-            "https://www.facebook.com/megapizzaelbiar/",
-            "https://www.facebook.com/megapizzaelbiar/",
-            "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=",
-            "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",
-        )
-        )
-        AppDatabase.buildDatabase(requireActivity())?.getRestaurantDao()?.addRestaurant(Restaurant(
-            3,
-            "Chicken Street",
-            "Fast Food",
-            R.drawable.megapizza,
-            "Elbiar",
-            "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9",
-            "https://goo.gl/maps/Y68Z4dKBGjYkeDC59",
-            4.6,
-            "https://www.facebook.com/megapizzaelbiar/",
-            "https://www.facebook.com/megapizzaelbiar/",
-            "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=",
-            "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",
-        )
-        )
+        var data= mutableListOf<Restaurant>()
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
+        data.add(Restaurant(1, "Mega Pizza", "Fast Food", R.drawable.megapizza, "Elbiar", "https://maps.app.goo.gl/Hq7XA3rC6vRMCwMN9", "https://goo.gl/maps/Y68Z4dKBGjYkeDC59", 4.6, "https://www.facebook.com/megapizzaelbiar/", "https://www.facebook.com/megapizzaelbiar/", "https://instagram.com/mega_pizza_elbiar?igshid=YmMyMTA2M2Y=", "https://www.instagram.com/mega_pizza_elbiar/?hl=fr",))
 
-        return AppDatabase.buildDatabase(requireActivity())?.getRestaurantDao()?.getRestaurants()
+
+        return data
     }
 
     override fun onRestaurantClickListener(data: Restaurant) {
-        val bundle= bundleOf("Restaurant" to data.id_restau)
+        val bundle= bundleOf("Restaurant" to data.id)
         this.findNavController().navigate(R.id.action_Restaurant_to_menu, bundle)
     }
 }

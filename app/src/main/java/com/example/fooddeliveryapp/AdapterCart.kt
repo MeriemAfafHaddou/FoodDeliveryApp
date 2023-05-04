@@ -3,6 +3,7 @@ package com.example.fooddeliveryapp
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddeliveryapp.databinding.CartItemLayoutBinding
 
@@ -15,9 +16,9 @@ class AdapterCart (val data:MutableList<CartItem>, var context: Context): Recycl
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
-            cartName.text=data[position].order.name
-            cartPrice.text= data[position].order.price.toString()+" DA"
-            cartIngreds.text=data[position].order.ingredients
+            cartName.text=data[position].name
+            cartPrice.text= data[position].unitPrice.toString()+" DA"
+            cartIngreds.text=data[position].ingredients
             cartSize.text=data[position].size+ " x "+ data[position].quantity.toString()
             total.text=data[position].total.toString() + " DA"
 
@@ -25,7 +26,9 @@ class AdapterCart (val data:MutableList<CartItem>, var context: Context): Recycl
                 cartSize.text=data[position].size+ "( +200 DA) x "+ data[position].quantity.toString()
             }
             remove.setOnClickListener{
-                Cart.orders.remove(data[position])
+                AppDatabase.buildDatabase(context)?.getCartDao()?.deleteCartItem(data[position])
+                Toast.makeText(context,"Order Removed from Cart. ", Toast.LENGTH_LONG).show()
+
             }
         }
     }

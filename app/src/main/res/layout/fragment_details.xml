@@ -176,7 +176,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/borderradius"
         android:backgroundTint="#FFFFB703"
-        android:text="Add to cart >"
+        android:text="Add to cart"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
