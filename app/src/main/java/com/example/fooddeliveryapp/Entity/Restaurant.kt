@@ -1,9 +1,9 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Entity
 data class Restaurant(
     val id: Int,
     val name: String,
     val type: String,
-    val img: Int,
+    val img: String,
     val address: String,
     val map: String,
     val mapweb: String,

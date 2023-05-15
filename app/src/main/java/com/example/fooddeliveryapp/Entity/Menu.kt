@@ -1,4 +1,4 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Entity
 data class Menu(
     val id: Int,
     val name: String,
@@ -6,6 +6,6 @@ data class Menu(
     val ingredients: String,
     val cal: Int,
     val rating: Double,
-    val img: Int,
+    val img: String,
     val restaurant:Int
 )

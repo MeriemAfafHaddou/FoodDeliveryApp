@@ -6,7 +6,7 @@
     app:startDestination="@id/fragmentHome">
     <fragment
         android:id="@+id/fragmentHome"
-        android:name="com.example.fooddeliveryapp.FragmentHome"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentRestaurants"
         android:label="First"
         tools:layout="@layout/fragment_home" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment2"
-        android:name="com.example.fooddeliveryapp.FragmentMenu"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentMenu"
         android:label="Second"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -24,12 +24,12 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentProfile"
-        android:name="com.example.fooddeliveryapp.FragmentProfile"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentProfile"
         android:label="Third"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/fragmentCart"
-        android:name="com.example.fooddeliveryapp.FragmentCart"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentCart"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action
@@ -41,17 +41,17 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
-        android:name="com.example.fooddeliveryapp.FragmentDetails"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentDetails"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
     <activity
         android:id="@+id/login"
-        android:name="com.example.fooddeliveryapp.login"
+        android:name="com.example.fooddeliveryapp.loginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
     <fragment
         android:id="@+id/fragmentConfirm"
-        android:name="com.example.fooddeliveryapp.FragmentDelivery"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentDelivery"
         android:label="fragment_confirm"
         tools:layout="@layout/fragment_delivery" />
 </navigation>

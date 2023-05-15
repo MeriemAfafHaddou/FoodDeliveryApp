@@ -1,4 +1,4 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey

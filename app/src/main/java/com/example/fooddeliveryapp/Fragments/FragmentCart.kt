@@ -1,4 +1,4 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Fragments
 
 import android.content.Context
 import android.content.Intent
@@ -9,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.os.bundleOf
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fooddeliveryapp.Adapter.AdapterCart
+import com.example.fooddeliveryapp.AppDatabase
+import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.databinding.FragmentCartBinding
 
 class FragmentCart : Fragment() {

@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.example.fooddeliveryapp.Entity.User
 
-class register : AppCompatActivity() {
+class registerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -20,7 +21,7 @@ class register : AppCompatActivity() {
             val phone=findViewById<EditText>(R.id.phoneNum).text.toString()
             val city=findViewById<EditText>(R.id.city).text.toString()
             val ad=findViewById<EditText>(R.id.ad).text.toString()
-            val user=User(id, name, email, pwd, phone, city, ad)
+            val user= User(id, name, email, pwd, phone, city, ad)
             val intent = Intent(this,MainActivity::class.java)
             intent.putExtra("Menu","Mega Pizza")
         }

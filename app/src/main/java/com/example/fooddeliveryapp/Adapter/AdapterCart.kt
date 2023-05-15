@@ -1,10 +1,12 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fooddeliveryapp.AppDatabase
+import com.example.fooddeliveryapp.Entity.CartItem
 import com.example.fooddeliveryapp.databinding.CartItemLayoutBinding
 
 class AdapterCart (val data:MutableList<CartItem>, var context: Context): RecyclerView.Adapter<AdapterCart.MyViewHolder>() {

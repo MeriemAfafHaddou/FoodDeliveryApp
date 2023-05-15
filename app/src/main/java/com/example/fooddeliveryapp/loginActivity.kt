@@ -9,13 +9,14 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.edit
+import com.example.fooddeliveryapp.Entity.User
 
 
-class login : AppCompatActivity() {
+class loginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val user=User(
+        val user= User(
             1,"Test","test@gmail.com","test","0000","algiers","algiers"
         )
         val btn = findViewById<Button>(R.id.login_btn)
@@ -46,7 +47,7 @@ class login : AppCompatActivity() {
 
         val new = findViewById(R.id.create) as TextView
         new.setOnClickListener{
-            val intent = Intent(this,register::class.java)
+            val intent = Intent(this,registerActivity::class.java)
             intent.putExtra("Menu","Mega Pizza")
             this.startActivity(intent)
         }

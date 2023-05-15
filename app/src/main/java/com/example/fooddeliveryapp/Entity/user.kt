@@ -1,4 +1,4 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Entity
 data class User(
     var userId:Long?,
     var fullName:String?,
@@ -7,4 +7,5 @@ data class User(
     var phoneNum:String,
     var city:String?,
     var address: String?
-)
+) {
+}

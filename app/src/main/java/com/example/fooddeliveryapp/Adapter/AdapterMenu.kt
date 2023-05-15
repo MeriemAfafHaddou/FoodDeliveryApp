@@ -1,9 +1,11 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fooddeliveryapp.Entity.Menu
+import com.example.fooddeliveryapp.ClickListener.MenuClickListener
 import com.example.fooddeliveryapp.databinding.MenuLayoutBinding
 
 class AdapterMenu (val data:List<Menu>, var context: Context, val menuClickListener: MenuClickListener): RecyclerView.Adapter<AdapterMenu.MyViewHolder>() {

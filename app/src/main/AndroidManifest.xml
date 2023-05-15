@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
     <activity
-            android:name=".register"
+            android:name=".registerActivity"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".loginActivity"
             android:exported="false">
 
         </activity>

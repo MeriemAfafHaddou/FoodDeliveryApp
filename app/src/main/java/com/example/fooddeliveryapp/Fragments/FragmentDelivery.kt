@@ -1,12 +1,13 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.fooddeliveryapp.R
 
-class FragmentProfile : Fragment() {
+class FragmentDelivery : Fragment() {
 
 
     override fun onCreateView(
@@ -14,7 +15,7 @@ class FragmentProfile : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_delivery, container, false)
     }
-    
+
 }

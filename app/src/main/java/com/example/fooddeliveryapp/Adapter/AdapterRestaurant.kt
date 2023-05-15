@@ -1,13 +1,15 @@
-package com.example.fooddeliveryapp
+package com.example.fooddeliveryapp.Adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fooddeliveryapp.*
+import com.example.fooddeliveryapp.ClickListener.RestaurantClickListener
+import com.example.fooddeliveryapp.Entity.Restaurant
 import com.example.fooddeliveryapp.databinding.RestaurantLayoutBinding
 
-class AdapterRestaurant(val data:List<Restaurant>, var context: Context, val RestaurantClickListener:RestaurantClickListener):RecyclerView.Adapter<AdapterRestaurant.MyViewHolder>() {
+class AdapterRestaurant(val data:List<Restaurant>, var context: Context, val RestaurantClickListener: RestaurantClickListener):RecyclerView.Adapter<AdapterRestaurant.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(RestaurantLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
