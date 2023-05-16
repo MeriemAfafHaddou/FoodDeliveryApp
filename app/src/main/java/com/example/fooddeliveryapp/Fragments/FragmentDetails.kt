@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.fooddeliveryapp.AppDatabase
 import com.example.fooddeliveryapp.Entity.CartItem
 import com.example.fooddeliveryapp.Entity.Menu
@@ -19,16 +20,8 @@ class FragmentDetails : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         binding= FragmentDetailsBinding.inflate(layoutInflater)
-        val menuItem = Menu(
-            1, "Pizza Margerita",
-            350,
-            "Tomato, Cheese, Olives",
-            200,
-            4.6,
-            R.drawable.pizza,
-            1
-        )
-        binding.detailsImage.setImageResource(menuItem.img)
+        val menuItem = arguments?.get("menuDetails") as Menu
+        Glide.with(this).load(menuItem.img).into(binding.detailsImage)
         binding.detailsName.text=menuItem.name
         binding.detailsIngreds.text=menuItem.ingredients
         binding.detailsCal.text=menuItem.cal.toString()+" Kcal"

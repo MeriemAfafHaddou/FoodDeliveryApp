@@ -4,13 +4,20 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fooddeliveryapp.*
 import com.example.fooddeliveryapp.ClickListener.RestaurantClickListener
 import com.example.fooddeliveryapp.Entity.Restaurant
 import com.example.fooddeliveryapp.databinding.RestaurantLayoutBinding
 
-class AdapterRestaurant(val data:List<Restaurant>, var context: Context, val RestaurantClickListener: RestaurantClickListener):RecyclerView.Adapter<AdapterRestaurant.MyViewHolder>() {
+class AdapterRestaurant(var context: Context, val RestaurantClickListener: RestaurantClickListener):RecyclerView.Adapter<AdapterRestaurant.MyViewHolder>() {
 
+    var data= mutableListOf<Restaurant>()
+
+    fun setRestaurants(restaurants: List<Restaurant>){
+        this.data=restaurants.toMutableList()
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(RestaurantLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -20,7 +27,6 @@ class AdapterRestaurant(val data:List<Restaurant>, var context: Context, val Res
         holder.binding.apply {
             name.text = data[position].name
             type.text = data[position].type
-            img.setImageResource(R.drawable.megapizza)
             address.text=data[position].address
             ratingValue.text=data[position].rating.toString()
             fb.setOnClickListener {
@@ -38,6 +44,7 @@ class AdapterRestaurant(val data:List<Restaurant>, var context: Context, val Res
             mail.setOnClickListener{
                 sendEmail(context, "megapizzaelbiar@gmail.com")
             }
+            Glide.with(context).load(data[position].img).into(img)
         }
 
         holder.binding.root.setOnClickListener{

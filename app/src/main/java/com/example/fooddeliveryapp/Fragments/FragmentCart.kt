@@ -37,7 +37,7 @@ class FragmentCart : Fragment() {
             val pref = context?.getSharedPreferences("userdb", Context.MODE_PRIVATE)
             val connected= pref?.getBoolean("connected",false)
             if(connected==true){
-                this.findNavController().navigate(R.id.action_fragmentCart_to_fragmentConfirm)
+                this.findNavController().navigate(R.id.action_fragmentCart_to_fragmentValidate)
             }else{
                 this.findNavController().navigate(R.id.action_fragmentCart_to_login)
                 Toast.makeText(context,"You have to be connected ! ", Toast.LENGTH_LONG).show()

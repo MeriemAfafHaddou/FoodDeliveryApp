@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -16,18 +15,13 @@ import com.example.fooddeliveryapp.Adapter.AdapterMenu
 import com.example.fooddeliveryapp.ClickListener.MenuClickListener
 import com.example.fooddeliveryapp.Entity.Menu
 import com.example.fooddeliveryapp.R
-import com.example.fooddeliveryapp.Retrofit.RestaurantService
-import com.example.fooddeliveryapp.Retrofit.MenuService
-import com.example.fooddeliveryapp.ViewModel.MenuModel
-import com.example.fooddeliveryapp.databinding.FragmentMenuBinding
-import kotlinx.coroutines.*
+import com.example.fooddeliveryapp.ViewModel.RestaurantModel
 
 
 class FragmentMenu : Fragment(), MenuClickListener
     {
-        lateinit var binding: FragmentMenuBinding
         lateinit var recyclerView:RecyclerView
-        lateinit var menuModel: MenuModel
+        lateinit var restaurantModel: RestaurantModel
         lateinit var progressBar: ProgressBar
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -38,43 +32,20 @@ class FragmentMenu : Fragment(), MenuClickListener
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-            menuModel= ViewModelProvider(requireActivity()).get(MenuModel::class.java)
+            restaurantModel= ViewModelProvider(requireActivity()).get(RestaurantModel::class.java)
             val recyclerView = view.findViewById(R.id.recyclerViewMenu) as RecyclerView
             val layoutManager = LinearLayoutManager(context)
+            val adapter = AdapterMenu(requireActivity(),this@FragmentMenu)
             recyclerView.layoutManager=layoutManager
-            if(menuModel.data.isEmpty()){
-                loadRestaurants()
-            }else{
-                recyclerView.adapter= AdapterMenu(menuModel.data,requireContext(), this)
+            recyclerView.adapter=adapter
+            val idRestaurant=arguments?.getInt("idRestaurant")
+            if (idRestaurant != null) {
+                restaurantModel.loadMenus(idRestaurant)
             }
+
         }
-
-        private fun loadRestaurants() {
-            val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-                requireActivity().runOnUiThread {
-                    progressBar.visibility = View.INVISIBLE
-                    Toast.makeText(requireActivity(), "Une erreur s'est produite", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-            progressBar.visibility = View.VISIBLE
-
-            CoroutineScope(Dispatchers.IO+ exceptionHandler).launch {
-                val response = MenuService.createEndpoint().getMenuByRestaurant()
-                withContext(Dispatchers.Main) {
-                    progressBar.visibility = View.INVISIBLE
-                    if (response.isSuccessful && response.body() != null) {
-                        menuModel.data = response.body()!!.toMutableList()
-                        recyclerView.adapter = AdapterMenu(menuModel.data,requireContext(), this@FragmentMenu)
-                    } else {
-                        Toast.makeText(requireActivity(), "Une erreur s'est produite", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        }
-
         override fun onMenuClickListener(data: Menu) {
-            var bundle= bundleOf("Id" to data.id)
+            var bundle= bundleOf("menuDetails" to data)
             this.findNavController().navigate(R.id.action_menu_to_details, bundle)
         }
     }

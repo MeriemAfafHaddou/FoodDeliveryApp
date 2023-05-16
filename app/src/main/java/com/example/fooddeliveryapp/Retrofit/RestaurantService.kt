@@ -1,16 +1,26 @@
 package com.example.fooddeliveryapp.Retrofit
 
+import com.example.fooddeliveryapp.Entity.Commande
 import com.example.fooddeliveryapp.Entity.Menu
 import com.example.fooddeliveryapp.Entity.Restaurant
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface RestaurantService {
     //Restaurants
-    @GET("restaurant/getall")
+    @GET("restaurants")
     suspend fun getAllRestaurants(): Response<List<Restaurant>>
+
+    @GET("restaurants/{id}/menu")
+    suspend fun getMenuByRestaurant(@Path("id") id: Int): Response<List<Menu>>
+
+    @POST("")
+    suspend fun validateCommand(@Body command: Commande)
 
     companion object {
         @Volatile

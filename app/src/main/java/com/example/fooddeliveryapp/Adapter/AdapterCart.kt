@@ -18,6 +18,7 @@ class AdapterCart (val data:MutableList<CartItem>, var context: Context): Recycl
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
+
             cartName.text=data[position].name
             cartPrice.text= data[position].unitPrice.toString()+" DA"
             cartIngreds.text=data[position].ingredients

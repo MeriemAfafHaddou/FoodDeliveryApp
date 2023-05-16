@@ -1,33 +1,28 @@
 package com.example.fooddeliveryapp.Retrofit
 
 import com.example.fooddeliveryapp.Entity.Menu
-import com.example.fooddeliveryapp.Entity.Restaurant
+import com.example.fooddeliveryapp.Entity.User
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
-interface MenuService {
-    //Menus
-    @GET("restaurant/{id}/menu")
-    suspend fun getMenuByRestaurant(): Response<List<Menu>>
-
-
+interface UserService {
+    @GET("users/{id}")
+    suspend fun getUserInfos(@Path("id") id: Int): Response<User>
     companion object {
         @Volatile
-        var endpoint: MenuService? = null
-        fun createEndpoint(): MenuService {
+        var endpoint: UserService? = null
+        fun createEndpoint(): UserService {
             if(endpoint ==null) {
                 synchronized(this) {
                     endpoint = Retrofit.Builder().baseUrl("")
                         .addConverterFactory(GsonConverterFactory.create()).build()
-                        .create(MenuService::class.java)
+                        .create(UserService::class.java)
                 }
             }
             return endpoint!!
-
         }
-
-
     }
 }

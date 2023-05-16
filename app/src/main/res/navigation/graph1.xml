@@ -36,8 +36,8 @@
             android:id="@+id/action_fragmentCart_to_login"
             app:destination="@id/login" />
         <action
-            android:id="@+id/action_fragmentCart_to_fragmentConfirm"
-            app:destination="@id/fragmentConfirm" />
+            android:id="@+id/action_fragmentCart_to_fragmentValidate"
+            app:destination="@id/fragmentValidate" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
@@ -50,8 +50,17 @@
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
     <fragment
-        android:id="@+id/fragmentConfirm"
+        android:id="@+id/fragmentDelivery"
         android:name="com.example.fooddeliveryapp.Fragments.FragmentDelivery"
         android:label="fragment_confirm"
         tools:layout="@layout/fragment_delivery" />
+    <fragment
+        android:id="@+id/fragmentValidate"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentValidate"
+        android:label="fragment_validate"
+        tools:layout="@layout/fragment_validate" >
+        <action
+            android:id="@+id/action_fragmentValidate_to_fragmentDelivery"
+            app:destination="@id/fragmentDelivery" />
+    </fragment>
 </navigation>

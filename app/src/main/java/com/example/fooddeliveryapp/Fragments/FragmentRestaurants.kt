@@ -16,9 +16,7 @@ import com.example.fooddeliveryapp.Adapter.AdapterRestaurant
 import com.example.fooddeliveryapp.ClickListener.RestaurantClickListener
 import com.example.fooddeliveryapp.Entity.Restaurant
 import com.example.fooddeliveryapp.R
-import com.example.fooddeliveryapp.Retrofit.RestaurantService
 import com.example.fooddeliveryapp.ViewModel.RestaurantModel
-import kotlinx.coroutines.*
 
 class FragmentRestaurants : Fragment(), RestaurantClickListener {
     lateinit var recyclerView:RecyclerView
@@ -34,44 +32,36 @@ class FragmentRestaurants : Fragment(), RestaurantClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         restaurantsModel= ViewModelProvider(requireActivity()).get(RestaurantModel::class.java)
-        val recyclerView = view.findViewById(R.id.recyclerViewRestaurant) as RecyclerView
+        recyclerView = view.findViewById(R.id.recyclerViewRestaurant) as RecyclerView
         val layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager=layoutManager
+        val adapter=AdapterRestaurant(requireActivity(), this@FragmentRestaurants)
+        recyclerView.adapter= adapter
+        restaurantsModel.loadRestaurants()
 
-        if(restaurantsModel.data.isEmpty()){
-            loadRestaurants()
-        }else{
-            recyclerView.adapter=AdapterRestaurant(restaurantsModel.data,requireContext(), this)
-        }
-    }
-
-    private fun loadRestaurants() {
-        val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-            requireActivity().runOnUiThread {
-                progressBar.visibility = View.INVISIBLE
-                Toast.makeText(requireActivity(), "Une erreur s'est produite", Toast.LENGTH_SHORT).show()
-            }
-
-        }
-        progressBar.visibility = View.VISIBLE
-
-        CoroutineScope(Dispatchers.IO+ exceptionHandler).launch {
-            val response = RestaurantService.createEndpoint().getAllRestaurants()
-            withContext(Dispatchers.Main) {
-                progressBar.visibility = View.INVISIBLE
-                if (response.isSuccessful && response.body() != null) {
-                    restaurantsModel.data = response.body()!!.toMutableList()
-                    recyclerView.adapter = AdapterRestaurant(restaurantsModel.data,requireContext(),this@FragmentRestaurants)
-                } else {
-                    Toast.makeText(requireActivity(), "Une erreur s'est produite", Toast.LENGTH_SHORT).show()
-                }
+        restaurantsModel.loading.observe(requireActivity()) { loading ->
+            if (loading) {
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.GONE
             }
         }
 
+        restaurantsModel.errorMessage.observe(
+            requireActivity()
+        ) { errorMessaage ->
+            Toast.makeText(requireContext(), errorMessaage, Toast.LENGTH_SHORT).show()
+        }
+
+        restaurantsModel.restaurants.observe(requireActivity()
+        ) { data ->
+            adapter.setRestaurants(data)
+        }
     }
+
 
     override fun onRestaurantClickListener(data: Restaurant) {
-        val bundle= bundleOf("Restaurant" to data.id)
+        val bundle= bundleOf("idRestaurant" to data.id)
         this.findNavController().navigate(R.id.action_Restaurant_to_menu, bundle)
     }
 }
