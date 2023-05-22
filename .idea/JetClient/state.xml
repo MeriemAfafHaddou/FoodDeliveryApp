@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JetClientState">
+    <option name="draftsState">
+      <draftsState>
+        <option name="requests">
+          <list>
+            <requestState>
+              <option name="id" value="d3047616-2a33-4c4f-9b34-c0caa0b1a4b2" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft" />
+              <option name="url" value="https://192.168.56.1:4000/restaurants" />
+            </requestState>
+            <requestState>
+              <option name="id" value="49d0370a-7b17-4906-abb2-c1d361267a1e" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft 1" />
+              <option name="url" value="https://127.0.0.1:4000/restaurants" />
+            </requestState>
+            <requestState>
+              <option name="id" value="42ba8b44-71a7-4559-b128-916a897784c1" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft 2" />
+              <option name="url" value="https://localhost:4000/restaurants" />
+            </requestState>
+            <requestState>
+              <option name="id" value="8d7a2e50-239b-4059-85c2-b4ad5c83e9e6" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft 3" />
+              <option name="url" value="https://192.168.56.1:4000/restaurants" />
+            </requestState>
+          </list>
+        </option>
+      </draftsState>
+    </option>
+    <option name="id" value="5a3e779c-1fe8-4600-85eb-39321177c319" />
+  </component>
+</project>

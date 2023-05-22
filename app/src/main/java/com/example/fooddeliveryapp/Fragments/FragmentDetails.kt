@@ -11,6 +11,7 @@ import com.example.fooddeliveryapp.Entity.CartItem
 import com.example.fooddeliveryapp.Entity.Menu
 import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.databinding.FragmentDetailsBinding
+import com.squareup.picasso.Picasso
 
 class FragmentDetails : Fragment() {
     lateinit var binding: FragmentDetailsBinding
@@ -25,10 +26,11 @@ class FragmentDetails : Fragment() {
             "Tomato, Cheese, Olives",
             200,
             4.6,
-            R.drawable.pizza,
+            "https://www.google.dz/url?sa=i&url=https%3A%2F%2Fwww.myrecipes.com%2Frecipe%2Fpepperoni-pizza&psig=AOvVaw30o37r7sjePfT8wh9Nfkd0&ust=1684500977580000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPCsyab1_v4CFQAAAAAdAAAAABAE",
             1
         )
-        binding.detailsImage.setImageResource(menuItem.img)
+        //load detailsImg image from url
+        Picasso.get().load(menuItem.img).into(binding.detailsImage)
         binding.detailsName.text=menuItem.name
         binding.detailsIngreds.text=menuItem.ingredients
         binding.detailsCal.text=menuItem.cal.toString()+" Kcal"
@@ -64,6 +66,7 @@ class FragmentDetails : Fragment() {
                 if(order.last().restaurant_id==menuItem.restaurant){
                     id_item=order.last().id+1
                     AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.addToCart(
+
                         CartItem(id_item,menuItem.restaurant,menuItem.name,menuItem.price,menuItem.ingredients,menuItem.cal,menuItem.rating,menuItem.img,size, q, total)
                     )
                     Toast.makeText(activity,"Order added to cart", Toast.LENGTH_SHORT).show()

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddeliveryapp.Entity.Menu
 import com.example.fooddeliveryapp.ClickListener.MenuClickListener
 import com.example.fooddeliveryapp.databinding.MenuLayoutBinding
+import com.squareup.picasso.Picasso
 
 class AdapterMenu (val data:List<Menu>, var context: Context, val menuClickListener: MenuClickListener): RecyclerView.Adapter<AdapterMenu.MyViewHolder>() {
 
@@ -22,7 +23,9 @@ class AdapterMenu (val data:List<Menu>, var context: Context, val menuClickListe
             ingredients.text = data[position].ingredients
             cal.text = data[position].cal.toString()
             menurating.text = data[position].rating.toString()
-            menuimg.setImageResource(data[position].img)
+            //load image from url
+            Picasso.get().load(data[position].img).into(menuimg)
+
         }
         holder.binding.root.setOnClickListener{
             menuClickListener.onMenuClickListener(data[position])

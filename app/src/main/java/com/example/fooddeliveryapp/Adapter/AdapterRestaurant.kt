@@ -18,19 +18,18 @@ class AdapterRestaurant(val data:List<Restaurant>, var context: Context, val Res
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
-            name.text = data[position].name
-            type.text = data[position].type
+            name.text = data[position].nom
             img.setImageResource(R.drawable.megapizza)
             address.text=data[position].address
             ratingValue.text=data[position].rating.toString()
             fb.setOnClickListener {
-                openPage(context,data[position].fb,data[position].fbweb)
+                openPage(context,data[position].fb,data[position].fbWeb)
             }
             ig.setOnClickListener{
-                openPage(context,data[position].ig,data[position].igweb)
+                openPage(context,data[position].ig,data[position].igWeb)
             }
             map.setOnClickListener{
-                openPage(context,data[position].map,data[position].mapweb)
+                openPage(context,data[position].map,data[position].mapWeb)
             }
             phone.setOnClickListener{
                 startCall(context,"0798806201")

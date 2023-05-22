@@ -13,7 +13,7 @@ data class CartItem (
     val ingredients: String,
     val cal: Int,
     val rating: Double,
-    val img: Int,
+    val img: String,
     val size:String,
     var quantity:Int,
     var total:Int
