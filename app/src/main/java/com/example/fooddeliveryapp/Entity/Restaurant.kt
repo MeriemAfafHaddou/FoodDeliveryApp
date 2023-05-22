@@ -1,15 +1,15 @@
 package com.example.fooddeliveryapp.Entity
 data class Restaurant(
-    val id: Int,
-    val name: String,
-    val type: String,
+    val idRestaurant: Int,
+    val type:String,
+    val nom: String,
     val img: String,
     val address: String,
+    val mapWeb: String,
     val map: String,
-    val mapweb: String,
-    val rating: Double,
     val fb: String,
-    val fbweb: String,
+    val fbWeb: String,
     val ig: String,
-    val igweb: String
+    val igWeb: String,
+    val rating: String
 )

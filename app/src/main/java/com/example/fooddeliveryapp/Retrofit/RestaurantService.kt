@@ -18,24 +18,21 @@ interface RestaurantService {
 
     @GET("restaurants/{id}/menu")
     suspend fun getMenuByRestaurant(@Path("id") id: Int): Response<List<Menu>>
-
-    @POST("")
-    suspend fun validateCommand(@Body command: Commande)
-
     companion object {
-        @Volatile
-        var endpoint: RestaurantService? = null
+        private var endpoint: RestaurantService? = null
         fun createEndpoint(): RestaurantService {
-            if(endpoint ==null) {
-                synchronized(this) {
-                    endpoint = Retrofit.Builder().baseUrl("")
-                        .addConverterFactory(GsonConverterFactory.create()).build()
-                        .create(RestaurantService::class.java)
-                }
+            if (endpoint != null) {
+                return endpoint!!
+            } else {
+                endpoint = Retrofit.Builder()
+                    .baseUrl("https://be26-105-235-130-112.ngrok-free.app/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(RestaurantService::class.java)
+                return endpoint!!
             }
-            return endpoint!!
-
         }
+
 
 
     }

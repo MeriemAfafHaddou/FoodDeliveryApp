@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.example.fooddeliveryapp.AppDatabase
 import com.example.fooddeliveryapp.Entity.CartItem
 import com.example.fooddeliveryapp.Entity.Menu
-import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.databinding.FragmentDetailsBinding
 
 class FragmentDetails : Fragment() {
@@ -57,6 +56,7 @@ class FragmentDetails : Fragment() {
                 if(order.last().restaurant_id==menuItem.restaurant){
                     id_item=order.last().id+1
                     AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.addToCart(
+
                         CartItem(id_item,menuItem.restaurant,menuItem.name,menuItem.price,menuItem.ingredients,menuItem.cal,menuItem.rating,menuItem.img,size, q, total)
                     )
                     Toast.makeText(activity,"Order added to cart", Toast.LENGTH_SHORT).show()

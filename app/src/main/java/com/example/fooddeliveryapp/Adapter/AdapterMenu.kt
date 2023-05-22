@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fooddeliveryapp.Entity.Menu
 import com.example.fooddeliveryapp.ClickListener.MenuClickListener
-import com.example.fooddeliveryapp.Entity.Restaurant
 import com.example.fooddeliveryapp.databinding.MenuLayoutBinding
 
 class AdapterMenu (var context: Context, val menuClickListener: MenuClickListener): RecyclerView.Adapter<AdapterMenu.MyViewHolder>() {
