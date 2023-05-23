@@ -1,4 +1,5 @@
 package com.example.fooddeliveryapp.ViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fooddeliveryapp.Entity.Menu
@@ -9,6 +10,7 @@ import kotlinx.coroutines.*
 class RestaurantModel: ViewModel() {
     var restaurants= MutableLiveData<List<Restaurant>>()
     var menu=MutableLiveData<List<Menu>>()
+    var details=MutableLiveData<Menu>()
     val loading = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -43,6 +45,23 @@ class RestaurantModel: ViewModel() {
                     loading.value = false
                     if (response.isSuccessful && response.body() != null) {
                         menu.value=response.body()
+                    } else {
+                        errorMessage.value="Une erreur s'est produite"
+                    }
+                }
+            }
+        }
+    }
+
+    fun loadDetails(idMenu:Int) {
+        if (details.value==null){
+            loading.value=true
+            CoroutineScope(Dispatchers.IO+ exceptionHandler).launch {
+                val response = RestaurantService.createEndpoint().getMenuDetails(idMenu)
+                withContext(Dispatchers.Main) {
+                    loading.value = false
+                    if (response.isSuccessful && response.body() != null) {
+                        details.value=response.body()
                     } else {
                         errorMessage.value="Une erreur s'est produite"
                     }

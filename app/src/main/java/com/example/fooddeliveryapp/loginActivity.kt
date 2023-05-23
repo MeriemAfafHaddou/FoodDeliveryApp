@@ -9,15 +9,15 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.edit
-import com.example.fooddeliveryapp.Entity.User
+import com.example.fooddeliveryapp.Entity.Client
 
 
 class loginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val user= User(
-            1,"Test","test@gmail.com","test","0000","algiers","algiers"
+        val user= Client(
+            1,"Test","test@gmail.com","test","0000"
         )
         val btn = findViewById<Button>(R.id.login_btn)
         val pref = getSharedPreferences("userdb", Context.MODE_PRIVATE)
@@ -26,7 +26,7 @@ class loginActivity : AppCompatActivity() {
             val email=findViewById<EditText>(R.id.email_login).text.toString()
             val pwd=findViewById<EditText>(R.id.pwd_login).text.toString()
             if(email == user.email){
-                if(pwd==user.pwd ){
+                if(pwd==user.mdp ){
                     pref.edit {
                         putBoolean("connected",true)
                     }

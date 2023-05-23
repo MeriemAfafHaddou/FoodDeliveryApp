@@ -1,13 +1,13 @@
 package com.example.fooddeliveryapp.ViewModel
 
 import androidx.lifecycle.MutableLiveData
-import com.example.fooddeliveryapp.Entity.User
+import com.example.fooddeliveryapp.Entity.Client
 import com.example.fooddeliveryapp.Retrofit.RestaurantService
 import com.example.fooddeliveryapp.Retrofit.UserService
 import kotlinx.coroutines.*
 
 class UserModel {
-    var user=MutableLiveData<User>()
+    var user=MutableLiveData<Client>()
     val loading = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->

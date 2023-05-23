@@ -16,8 +16,11 @@ interface RestaurantService {
     @GET("restaurants")
     suspend fun getAllRestaurants(): Response<List<Restaurant>>
 
-    @GET("restaurants/{id}/menu")
+    @GET("restaurants/{id}")
     suspend fun getMenuByRestaurant(@Path("id") id: Int): Response<List<Menu>>
+
+    @GET("restaurants/menu/{id}")
+    suspend fun getMenuDetails(@Path("id") id: Int): Response<Menu>
 
     @POST("")
     suspend fun validateCommand(@Body command: Commande)
@@ -28,7 +31,7 @@ interface RestaurantService {
         fun createEndpoint(): RestaurantService {
             if(endpoint ==null) {
                 synchronized(this) {
-                    endpoint = Retrofit.Builder().baseUrl("")
+                    endpoint = Retrofit.Builder().baseUrl("https://food-delivery-service.onrender.com")
                         .addConverterFactory(GsonConverterFactory.create()).build()
                         .create(RestaurantService::class.java)
                 }

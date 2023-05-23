@@ -1,11 +1,12 @@
 package com.example.fooddeliveryapp.Entity
+
 data class Menu(
-    val id: Int,
-    val name: String,
+    val idMenu: Int,
+    val nomMenu: String,
     val price: Int,
     val ingredients: String,
-    val cal: Int,
+    val calories: Int,
     val rating: Double,
-    val img: String,
+    val imgMenu: String,
     val restaurant:Int
 )

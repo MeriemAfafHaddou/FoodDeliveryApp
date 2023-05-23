@@ -1,16 +1,17 @@
 package com.example.fooddeliveryapp.Adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fooddeliveryapp.*
-import com.example.fooddeliveryapp.ClickListener.RestaurantClickListener
 import com.example.fooddeliveryapp.Entity.Restaurant
 import com.example.fooddeliveryapp.databinding.RestaurantLayoutBinding
 
-class AdapterRestaurant(var context: Context, val RestaurantClickListener: RestaurantClickListener):RecyclerView.Adapter<AdapterRestaurant.MyViewHolder>() {
+class AdapterRestaurant(var context: Context):RecyclerView.Adapter<AdapterRestaurant.MyViewHolder>() {
 
     var data= mutableListOf<Restaurant>()
 
@@ -25,7 +26,7 @@ class AdapterRestaurant(var context: Context, val RestaurantClickListener: Resta
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
-            name.text = data[position].name
+            name.text = data[position].nom
             type.text = data[position].type
             address.text=data[position].address
             ratingValue.text=data[position].rating.toString()
@@ -46,9 +47,10 @@ class AdapterRestaurant(var context: Context, val RestaurantClickListener: Resta
             }
             Glide.with(context).load(data[position].img).into(img)
         }
-
+        val bundle= Bundle()
+        bundle.putInt("idRestaurant",data[position].idRestaurant)
         holder.binding.root.setOnClickListener{
-            RestaurantClickListener.onRestaurantClickListener(data[position])
+            it.findNavController().navigate(R.id.action_Restaurant_to_menu, bundle)
         }
     }
 

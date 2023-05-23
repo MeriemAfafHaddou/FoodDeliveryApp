@@ -1,7 +1,7 @@
 package com.example.fooddeliveryapp.Entity
 data class Restaurant(
-    val id: Int,
-    val name: String,
+    val idRestaurant: Int,
+    val nom: String,
     val type: String,
     val img: String,
     val address: String,

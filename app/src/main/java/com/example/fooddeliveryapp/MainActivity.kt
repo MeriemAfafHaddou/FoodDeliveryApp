@@ -25,33 +25,12 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager. findFragmentById(R.id.navHost) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.navBottom,navController)
-
-
     }
-
-
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.overflow_menu, menu)
         return true
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when (item.itemId) {
-
-            R.id.logout-> {
-               // Add Logout code here
-            }
-
-        }
-        return super.onOptionsItemSelected(item)
-
-    }
-
-
-
 
 }

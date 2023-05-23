@@ -7,26 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddeliveryapp.Adapter.AdapterRestaurant
-import com.example.fooddeliveryapp.ClickListener.RestaurantClickListener
-import com.example.fooddeliveryapp.Entity.Restaurant
 import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.ViewModel.RestaurantModel
 
-class FragmentRestaurants : Fragment(), RestaurantClickListener {
+
+class FragmentRestaurants : Fragment() {
     lateinit var recyclerView:RecyclerView
     lateinit var restaurantsModel: RestaurantModel
-    lateinit var progressBar: ProgressBar
+    lateinit var progressBar1: ProgressBar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return  inflater.inflate(R.layout.fragment_home, container,false)
+        val view=inflater.inflate(R.layout.fragment_home, container,false)
+        progressBar1=view.findViewById(R.id.progressBar)
+        return  view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,15 +34,16 @@ class FragmentRestaurants : Fragment(), RestaurantClickListener {
         recyclerView = view.findViewById(R.id.recyclerViewRestaurant) as RecyclerView
         val layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager=layoutManager
-        val adapter=AdapterRestaurant(requireActivity(), this@FragmentRestaurants)
+        val adapter=AdapterRestaurant(requireActivity())
         recyclerView.adapter= adapter
         restaurantsModel.loadRestaurants()
 
         restaurantsModel.loading.observe(requireActivity()) { loading ->
+            println(loading)
             if (loading) {
-                progressBar.visibility = View.VISIBLE
+                progressBar1.visibility = View.VISIBLE
             } else {
-                progressBar.visibility = View.GONE
+                progressBar1.visibility = View.GONE
             }
         }
 
@@ -57,11 +57,5 @@ class FragmentRestaurants : Fragment(), RestaurantClickListener {
         ) { data ->
             adapter.setRestaurants(data)
         }
-    }
-
-
-    override fun onRestaurantClickListener(data: Restaurant) {
-        val bundle= bundleOf("idRestaurant" to data.id)
-        this.findNavController().navigate(R.id.action_Restaurant_to_menu, bundle)
     }
 }
