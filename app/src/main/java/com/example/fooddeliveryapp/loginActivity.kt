@@ -9,36 +9,37 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.edit
+import androidx.lifecycle.ViewModelProvider
 import com.example.fooddeliveryapp.Entity.Client
+import com.example.fooddeliveryapp.ViewModel.RestaurantModel
+import com.example.fooddeliveryapp.ViewModel.UserModel
 
 
 class loginActivity : AppCompatActivity() {
+    lateinit var userModel : UserModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val user= Client(
-            1,"Test","test@gmail.com","test","0000"
-        )
         val btn = findViewById<Button>(R.id.login_btn)
         val pref = getSharedPreferences("userdb", Context.MODE_PRIVATE)
 //        val connected=pref.getBoolean("connected",false)
         btn.setOnClickListener{
             val email=findViewById<EditText>(R.id.email_login).text.toString()
             val pwd=findViewById<EditText>(R.id.pwd_login).text.toString()
-            if(email == user.email){
-                if(pwd==user.mdp ){
-                    pref.edit {
-                        putBoolean("connected",true)
-                    }
-                    val intent = Intent(this,MainActivity::class.java)
-                    intent.putExtra("Menu","Mega Pizza")
-                    this.startActivity(intent)
-                    finish()
-                }else{
-                    Toast.makeText(this,"Incorrect Password !",Toast.LENGTH_LONG).show()
+            userModel= ViewModelProvider(this).get(UserModel::class.java)
+            userModel.login(email, pwd)
+            val user=userModel.user.value
+            println(user?.nomClient)
+            if(user!=null){
+                pref.edit {
+                    putBoolean("connected",true)
                 }
+                val intent = Intent(this,MainActivity::class.java)
+                intent.putExtra("Menu","Mega Pizza")
+                this.startActivity(intent)
+                finish()
             }else{
-                Toast.makeText(this,"Incorrect Email !",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Incorrect credentials !",Toast.LENGTH_LONG).show()
 
             }
 
