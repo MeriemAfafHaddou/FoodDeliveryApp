@@ -10,13 +10,28 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:text="Profile Information"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <EditText
+        android:id="@+id/fullName"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#8A8A8A"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/color_cursor"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <View
         android:id="@+id/view"
@@ -29,24 +44,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/fullName"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/color_cursor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <EditText
         android:id="@+id/email"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
+        android:backgroundTint="#8A8A8A"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -60,7 +61,7 @@
         android:id="@+id/pwd"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
+        android:backgroundTint="#8A8A8A"
         android:ems="10"
         android:inputType="textPassword"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -74,7 +75,7 @@
         android:id="@+id/phoneNum"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
+        android:backgroundTint="#8A8A8A"
         android:ems="10"
         android:inputType="phone"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -89,7 +90,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:text="Full Name"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/fullName"
@@ -102,6 +103,7 @@
         android:layout_marginTop="8dp"
         android:text="Email"
         android:textColor="@color/black"
+
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/fullName" />
 
@@ -127,16 +129,40 @@
 
     <Button
         android:id="@+id/register_btn"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/borderradius"
         android:backgroundTint="#FFB703"
-        android:text="Register"
+        android:text="Next"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/skip1"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNum" />
+
+    <Button
+        android:id="@+id/skip1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borderradius"
+        android:text="Skip"
+        android:textColor="#FFB703"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/register_btn"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNum" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
