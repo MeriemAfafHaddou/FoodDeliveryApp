@@ -27,18 +27,18 @@ class AdapterRestaurant(var context: Context):RecyclerView.Adapter<AdapterRestau
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
             name.text = data[position].nom
-            type.text = data[position].type
+           // type.text = data[position].type
             address.text=data[position].address
             ratingValue.text=data[position].rating.toString()
             fb.setOnClickListener {
-                openPage(context,data[position].fb,data[position].fbweb)
-            }
-            ig.setOnClickListener{
-                openPage(context,data[position].ig,data[position].igweb)
+              //open facebook web page
+                openPage(context,data[position].fb,data[position].fbWeb)
             }
             map.setOnClickListener{
-                openPage(context,data[position].map,data[position].mapweb)
+            openPage(context,data[position].map,data[position].mapWeb)
+
             }
+
             phone.setOnClickListener{
                 startCall(context,"0798806201")
             }

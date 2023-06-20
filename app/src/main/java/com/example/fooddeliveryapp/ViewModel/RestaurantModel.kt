@@ -29,6 +29,10 @@ class RestaurantModel: ViewModel() {
                     loading.value = false
                     if (response.isSuccessful && response.body() != null) {
                         restaurants.value=response.body()
+                        //print restaurants.value to logcat
+                        println(response.body())
+                        println(restaurants.value)
+
                     } else {
                         errorMessage.value="Une erreur s'est produite"
                     }

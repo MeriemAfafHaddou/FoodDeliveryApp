@@ -4,142 +4,170 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="32dp">
+    android:layout_marginBottom="32dp"
+    android:foregroundTint="#FB8500">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img"
+            android:layout_width="85dp"
+            android:layout_height="80dp"
+            android:scaleType="center"
+            android:src="@drawable/megapizza"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/cairo_semibold"
         android:text="Mega Pizza"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/img"
-        app:layout_constraintTop_toTopOf="@+id/img" />
+        android:textColor="#282828"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/cairo"
         android:text="Fast Food"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/img"
+        android:textColor="#282828"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <ImageView
-        android:id="@+id/fb"
-        android:layout_width="20dp"
+    <TextView
+        android:id="@+id/type2"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/ig"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/mail"
-        app:layout_constraintTop_toBottomOf="@+id/type"
-        app:srcCompat="@drawable/facebook" />
-
-    <ImageView
-        android:id="@+id/ig"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fb"
-        app:layout_constraintTop_toBottomOf="@+id/type"
-        app:srcCompat="@drawable/instagram" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/ratingValue"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:srcCompat="@drawable/star" />
+        android:fontFamily="@font/cairo"
+        android:text="| "
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#282828"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/type"
+        app:layout_constraintStart_toEndOf="@+id/type"
+        app:layout_constraintTop_toTopOf="@+id/type"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/ratingValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/cairo"
         android:text="4.4"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/ig"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        android:textColor="#282828"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/type2"
+        app:layout_constraintStart_toEndOf="@+id/type2"
+        app:layout_constraintTop_toTopOf="@+id/type2" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingValue"
+        app:layout_constraintStart_toEndOf="@+id/ratingValue"
+        app:layout_constraintTop_toTopOf="@+id/ratingValue"
+        app:srcCompat="@drawable/star_icon" />
+
+    <ImageButton
+        android:id="@+id/fb"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@null"
+        android:contentDescription="fb"
+        android:scaleType="centerInside"
+        android:scaleX="0.4"
+        android:scaleY="0.4"
+        app:layout_constraintBottom_toBottomOf="@+id/phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/phone"
+        app:srcCompat="@drawable/facebook"
+        app:tint="#FB8500" />
+
+    <ImageButton
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:contentDescription="phone"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mail"
+        app:layout_constraintEnd_toStartOf="@+id/fb"
+        app:layout_constraintTop_toTopOf="@+id/mail"
+        app:srcCompat="@drawable/phone"
+        app:tint="#FB8500" />
 
     <ImageView
         android:id="@+id/map"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/phone"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/type"
         app:layout_constraintTop_toBottomOf="@+id/type"
-        app:srcCompat="@drawable/map" />
-
-    <ImageView
-        android:id="@+id/mail"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/fb"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/phone"
-        app:layout_constraintTop_toBottomOf="@+id/type"
-        app:srcCompat="@drawable/mail" />
-
-    <ImageView
-        android:id="@+id/phone"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/mail"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/map"
-        app:layout_constraintTop_toBottomOf="@+id/type"
-        app:srcCompat="@drawable/phone" />
+        app:srcCompat="@drawable/baseline_location_on_24" />
 
     <TextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/cairo_semibold"
         android:text="El Biar, Algiers"
         android:textColor="#8A8A8A"
-        app:layout_constraintStart_toEndOf="@+id/img"
-        app:layout_constraintTop_toBottomOf="@+id/type" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/megapizza"
-        android:scaleType="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/RoundedSquare" />
+        app:layout_constraintBottom_toBottomOf="@+id/map"
+        app:layout_constraintStart_toEndOf="@+id/map"
+        app:layout_constraintTop_toTopOf="@+id/map" />
 
     <View
         android:id="@+id/view"
         android:layout_width="290dp"
         android:layout_height="1dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:background="#FB8500"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/address"
-        app:layout_constraintTop_toBottomOf="@+id/map" />
+        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintStart_toStartOf="@+id/map"
+        app:layout_constraintTop_toBottomOf="@+id/address" />
+
+    <ImageButton
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:contentDescription="mail"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/address"
+        app:layout_constraintEnd_toStartOf="@+id/phone"
+        app:layout_constraintTop_toTopOf="@+id/address"
+        app:srcCompat="@drawable/mail"
+        app:tint="#FB8500" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
