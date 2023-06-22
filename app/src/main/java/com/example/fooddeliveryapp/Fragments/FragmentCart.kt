@@ -46,10 +46,4 @@ class FragmentCart : Fragment() {
         return view
     }
 
-    companion object {
-        fun newIntent(context: Context): Intent {
-            return Intent(context, FragmentCart::class.java)
-        }
-    }
-
 }

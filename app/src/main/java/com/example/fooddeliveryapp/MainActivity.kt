@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager. findFragmentById(R.id.navHost) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.navBottom,navController)
+        val name = intent.getStringExtra("name")
+        if(name != null){
+            findViewById<TextView>(R.id.nameProfile).text=name.toString()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

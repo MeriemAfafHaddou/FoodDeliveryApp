@@ -26,7 +26,11 @@
         android:id="@+id/fragmentProfile"
         android:name="com.example.fooddeliveryapp.Fragments.FragmentProfile"
         android:label="Third"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_fragmentProfile_to_login"
+            app:destination="@id/login" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentCart"
         android:name="com.example.fooddeliveryapp.Fragments.FragmentCart"
@@ -53,7 +57,7 @@
         android:id="@+id/fragmentDelivery"
         android:name="com.example.fooddeliveryapp.Fragments.FragmentDelivery"
         android:label="fragment_confirm"
-        tools:layout="@layout/fragment_delivery" />
+        tools:layout="@layout/fragment_delivery_end" />
     <fragment
         android:id="@+id/fragmentValidate"
         android:name="com.example.fooddeliveryapp.Fragments.FragmentValidate"
@@ -62,5 +66,32 @@
         <action
             android:id="@+id/action_fragmentValidate_to_fragmentDelivery"
             app:destination="@id/fragmentDelivery" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRegisterEnd"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentRegisterEnd"
+        android:label="fragment_register_end"
+        tools:layout="@layout/fragment_register_end" >
+        <action
+            android:id="@+id/action_fragmentRegisterEnd_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRegisterForm"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentRegisterForm"
+        android:label="fragment_register_form"
+        tools:layout="@layout/fragment_register_form" >
+        <action
+            android:id="@+id/action_fragmentRegisterForm_to_fragmentAddPic"
+            app:destination="@id/fragmentAddPic" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddPic"
+        android:name="com.example.fooddeliveryapp.Fragments.FragmentAddPic"
+        android:label="fragment_add_pic"
+        tools:layout="@layout/fragment_add_pic" >
+        <action
+            android:id="@+id/action_fragmentAddPic_to_fragmentRegisterEnd"
+            app:destination="@id/fragmentRegisterEnd" />
     </fragment>
 </navigation>

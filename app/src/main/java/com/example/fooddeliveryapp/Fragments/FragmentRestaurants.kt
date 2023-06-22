@@ -39,6 +39,7 @@ class FragmentRestaurants : Fragment() {
         recyclerView.layoutManager=layoutManager
         val adapter=AdapterRestaurant(requireActivity())
         recyclerView.adapter= adapter
+        refresh.visibility=View.GONE
         restaurantsModel.loadRestaurants()
 
         restaurantsModel.loading.observe(requireActivity()) { loading ->
@@ -56,8 +57,8 @@ class FragmentRestaurants : Fragment() {
             Toast.makeText(requireContext(), errorMessaage, Toast.LENGTH_SHORT).show()
             refresh.visibility=View.VISIBLE
             refresh.setOnClickListener{
+                refresh.visibility=View.GONE
                 restaurantsModel.loading.observe(requireActivity()) { loading ->
-                    println(loading)
                     if (loading) {
                         progressBar1.visibility = View.VISIBLE
                     } else {
