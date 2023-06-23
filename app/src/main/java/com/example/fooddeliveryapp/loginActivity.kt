@@ -13,9 +13,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProvider
-import com.example.fooddeliveryapp.Entity.Client
-import com.example.fooddeliveryapp.Fragments.FragmentRegisterForm
-import com.example.fooddeliveryapp.ViewModel.RestaurantModel
 import com.example.fooddeliveryapp.ViewModel.UserModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -25,6 +22,10 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
+data class LoginRequest(
+    val mail: String,
+    val pwd: String
+)
 
 class loginActivity : AppCompatActivity() {
     lateinit var userModel : UserModel
@@ -40,16 +41,27 @@ class loginActivity : AppCompatActivity() {
         btn.setOnClickListener{
             val email=findViewById<EditText>(R.id.email_login).text.toString()
             val pwd=findViewById<EditText>(R.id.pwd_login).text.toString()
+
+            val req= LoginRequest(email, pwd)
             userModel= ViewModelProvider(this).get(UserModel::class.java)
-            userModel.login(email, pwd)
+            userModel.login(req)
             val user=userModel.user.value
-            println(user?.nomClient)
+            userModel.errorMessage.observe(
+                this
+            ) { errorMessaage ->
+                Toast.makeText(this, errorMessaage, Toast.LENGTH_SHORT).show()
+            }
+
+            userModel.user.observe(this
+            ) { data ->
+                findViewById<TextView>(R.id.nameProfile).text=user?.PrenomClient
+            }
             if(user!=null){
                 pref.edit {
                     putBoolean("connected",true)
+                    putInt("id",user.idClient)
                 }
                 val intent = Intent(this,MainActivity::class.java)
-                intent.putExtra("Menu","Mega Pizza")
                 this.startActivity(intent)
                 finish()
             }else{
@@ -108,6 +120,7 @@ class loginActivity : AppCompatActivity() {
         auth.signInWithCredential(credential).addOnCompleteListener{
             if(it.isSuccessful){
                 val intent:Intent=Intent(this, MainActivity::class.java)
+                findViewById<TextView>(R.id.nameProfile).text=account.displayName
                 intent.putExtra("email",account.email.toString())
                 intent.putExtra("name",account.displayName.toString())
                 startActivity(intent)

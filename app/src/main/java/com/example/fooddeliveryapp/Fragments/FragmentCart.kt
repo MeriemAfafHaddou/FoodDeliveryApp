@@ -19,11 +19,17 @@ import com.example.fooddeliveryapp.databinding.FragmentCartBinding
 
 class FragmentCart : Fragment() {
     lateinit var binding: FragmentCartBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_cart, container,false)
+        binding= FragmentCartBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val myRecyclerView = view.findViewById(R.id.recyclerViewCart) as RecyclerView
         val layoutManager = LinearLayoutManager(context)
         myRecyclerView.layoutManager=layoutManager
@@ -31,19 +37,31 @@ class FragmentCart : Fragment() {
             AdapterCart(
                 it,requireContext())
         }
+
+        var subtotal:Int=0
+        val list=AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.getCartItems()
+        if (list != null) {
+            for(item in list){
+                subtotal+=item.total
+            }
+            binding.subtotal.text=subtotal.toString()
+            binding.prixTotal.text=(subtotal+300).toString()
+            print("subtotal = $subtotal")
+        }
         myRecyclerView.adapter=myAdapter
         val btn=view.findViewById<Button>(R.id.Confirm)
         btn.setOnClickListener{
             val pref = context?.getSharedPreferences("userdb", Context.MODE_PRIVATE)
             val connected= pref?.getBoolean("connected",false)
             if(connected==true){
-                this.findNavController().navigate(R.id.action_fragmentCart_to_fragmentValidate)
+                val bundle=Bundle()
+                bundle.putInt("total",subtotal+300)
+                this.findNavController().navigate(R.id.action_fragmentCart_to_fragmentValidate, bundle)
             }else{
                 this.findNavController().navigate(R.id.action_fragmentCart_to_login)
                 Toast.makeText(context,"You have to be connected ! ", Toast.LENGTH_LONG).show()
             }
         }
-        return view
     }
 
 }

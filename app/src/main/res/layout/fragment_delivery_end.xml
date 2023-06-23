@@ -9,14 +9,25 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <View
+        android:id="@+id/view2"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="48dp"
+        android:background="#FB8500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPic" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="Your meal will be ready and brought to you \n in an Instant !"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintBottom_toTopOf="@+id/addPic"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,21 +36,67 @@
         android:id="@+id/addPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:src="@drawable/delivery"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageDelivery"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:shapeAppearanceOverlay="@style/cornerSize"
+        app:srcCompat="@drawable/profile" />
+
+    <Button
+        android:id="@+id/callDelivery"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/borderradius"
+        android:backgroundTint="#FFB703"
+        android:text="Call"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/messageDelivery"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryPhone" />
+
+    <Button
+        android:id="@+id/messageDelivery"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borderradius"
+        android:text="Message"
+        android:textColor="#FFB703"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/callDelivery"
+        app:layout_constraintTop_toTopOf="@+id/callDelivery" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/deliveryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="Thank you for trusting us."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPic" />
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/imageDelivery"
+        app:layout_constraintTop_toTopOf="@+id/imageDelivery" />
+
+    <TextView
+        android:id="@+id/deliveryPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageDelivery"
+        app:layout_constraintStart_toStartOf="@+id/deliveryName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

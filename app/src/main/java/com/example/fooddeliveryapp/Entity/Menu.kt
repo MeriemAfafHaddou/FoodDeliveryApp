@@ -8,5 +8,5 @@ data class Menu(
     val calories: Int,
     val rating: Double,
     val imgMenu: String,
-    val restaurant:Int
+    val idRestaurant:Int
 )

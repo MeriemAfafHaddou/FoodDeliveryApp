@@ -55,17 +55,6 @@ class FragmentRestaurants : Fragment() {
             requireActivity()
         ) { errorMessaage ->
             Toast.makeText(requireContext(), errorMessaage, Toast.LENGTH_SHORT).show()
-            refresh.visibility=View.VISIBLE
-            refresh.setOnClickListener{
-                refresh.visibility=View.GONE
-                restaurantsModel.loading.observe(requireActivity()) { loading ->
-                    if (loading) {
-                        progressBar1.visibility = View.VISIBLE
-                    } else {
-                        progressBar1.visibility = View.GONE
-                    }
-                }
-            }
         }
 
         restaurantsModel.restaurants.observe(requireActivity()

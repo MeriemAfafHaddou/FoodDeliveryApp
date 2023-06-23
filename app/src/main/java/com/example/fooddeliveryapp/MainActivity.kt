@@ -3,9 +3,11 @@ package com.example.fooddeliveryapp
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.core.content.edit
 import androidx.navigation.NavController
@@ -13,13 +15,17 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.databinding.ActivityMainBinding
+import com.example.fooddeliveryapp.databinding.FragmentProfileBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
+    private lateinit var profile: FragmentProfileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        profile=FragmentProfileBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         val navHostFragment = supportFragmentManager. findFragmentById(R.id.navHost) as NavHostFragment
@@ -27,9 +33,8 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navBottom,navController)
         val name = intent.getStringExtra("name")
         if(name != null){
-            findViewById<TextView>(R.id.nameProfile).text=name.toString()
+            profile.nameProfile.text=name
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

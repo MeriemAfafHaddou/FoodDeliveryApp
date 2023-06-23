@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import com.example.fooddeliveryapp.Fragments.FragmentDelivery
 
 fun openPage(ctx: Context, url: String,weburl:String) {
     var intent:Intent
@@ -30,4 +31,5 @@ fun sendEmail(ctx: Context, receiver:String){
     intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(receiver))
     ctx.startActivity(intent)
 }
+
 

@@ -3,6 +3,7 @@ package com.example.fooddeliveryapp.Retrofit
 import androidx.databinding.Bindable
 import com.example.fooddeliveryapp.Entity.Menu
 import com.example.fooddeliveryapp.Entity.Client
+import com.example.fooddeliveryapp.LoginRequest
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,17 +15,18 @@ import retrofit2.http.Path
 interface UserService {
 
     @POST("users/login")
-    suspend fun login(@Body email:String, @Body pwd:String):Response<Client>
+    suspend fun login(@Body loginRequest: LoginRequest):Response<Client>
 
-    @GET("users/{id}")
-    suspend fun getUserInfos(@Path("id") id: Int): Response<Client>
+    @POST("users/register")
+    suspend fun register(@Body client: Client): Response<Client>
+
     companion object {
         @Volatile
         var endpoint: UserService? = null
         fun createEndpoint(): UserService {
             if(endpoint ==null) {
                 synchronized(this) {
-                    endpoint = Retrofit.Builder().baseUrl("https://food-delivery-service.onrender.com")
+                    endpoint = Retrofit.Builder().baseUrl("http://192.168.42.26:4000")
                         .addConverterFactory(GsonConverterFactory.create()).build()
                         .create(UserService::class.java)
                 }

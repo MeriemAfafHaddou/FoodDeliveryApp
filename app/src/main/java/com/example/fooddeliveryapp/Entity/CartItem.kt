@@ -1,12 +1,13 @@
 package com.example.fooddeliveryapp.Entity
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(tableName ="cartItems")
 data class CartItem (
     @PrimaryKey
-    val id:Int,
+    val idItem:Int,
+
+    val idMenu:Int,
     val restaurant_id:Int,
     val name: String,
     val unitPrice: Int,
@@ -16,6 +17,7 @@ data class CartItem (
     val img: String,
     val size:String,
     var quantity:Int,
+    var notes:String,
     var total:Int
 )
 

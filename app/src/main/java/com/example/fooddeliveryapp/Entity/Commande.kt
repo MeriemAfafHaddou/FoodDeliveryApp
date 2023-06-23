@@ -1,9 +1,11 @@
 package com.example.fooddeliveryapp.Entity
 
-class Commande (
-    val id:Int,
-    val idRestaurant:Int,
-    val items:List<Triple<Int, Int, Int>>,
+data class Commande (
+    val idClient:Int?,
+    val prixTotal:Int?,
+    val idCommande:Int,
     val address:String,
-    val notes:String,
+    val deliveryNotes:String,
+    val idPerson:Int,
+    val Items:List<CartItem>
 )

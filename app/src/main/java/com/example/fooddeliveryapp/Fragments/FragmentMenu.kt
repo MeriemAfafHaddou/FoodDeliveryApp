@@ -38,8 +38,6 @@ class FragmentMenu : Fragment()
             recyclerView.layoutManager=layoutManager
             recyclerView.adapter=adapter
             val idRestaurant=arguments?.getInt("idRestaurant")
-            print("identifiant ")
-            print(idRestaurant)
             if (idRestaurant != null) {
                 restaurantsModel.loadMenus(idRestaurant)
                 println("Id restaurant : $idRestaurant")

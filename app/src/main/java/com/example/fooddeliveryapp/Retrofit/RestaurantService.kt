@@ -1,6 +1,7 @@
 package com.example.fooddeliveryapp.Retrofit
 
 import com.example.fooddeliveryapp.Entity.Commande
+import com.example.fooddeliveryapp.Entity.DeliveryPerson
 import com.example.fooddeliveryapp.Entity.Menu
 import com.example.fooddeliveryapp.Entity.Restaurant
 import retrofit2.Response
@@ -22,8 +23,8 @@ interface RestaurantService {
     @GET("restaurants/menu/{id}")
     suspend fun getMenuDetails(@Path("id") id: Int): Response<Menu>
 
-    @POST("")
-    suspend fun validateCommand(@Body command: Commande)
+    @POST("order/validate")
+    suspend fun validateCommand(@Body command: Commande): Response<DeliveryPerson>
 
     companion object {
         @Volatile
@@ -31,7 +32,7 @@ interface RestaurantService {
         fun createEndpoint(): RestaurantService {
             if(endpoint ==null) {
                 synchronized(this) {
-                    endpoint = Retrofit.Builder().baseUrl("https://food-delivery-service.onrender.com")
+                    endpoint = Retrofit.Builder().baseUrl("http://192.168.42.26:4000")
                         .addConverterFactory(GsonConverterFactory.create()).build()
                         .create(RestaurantService::class.java)
                 }

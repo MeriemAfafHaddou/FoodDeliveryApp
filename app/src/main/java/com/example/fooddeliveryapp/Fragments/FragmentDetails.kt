@@ -5,13 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.fooddeliveryapp.AppDatabase
 import com.example.fooddeliveryapp.Entity.CartItem
-import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.ViewModel.RestaurantModel
 import com.example.fooddeliveryapp.databinding.FragmentDetailsBinding
 
@@ -29,7 +27,6 @@ class FragmentDetails : Fragment() {
             var menuItem=restaurantsModel.menu.value?.find { it.idMenu==idMenu }
             if(menuItem!=null){
                 binding.apply {
-                    println("hello there")
                     detailsName.text=menuItem?.nomMenu
                     detailsIngreds.text=menuItem?.ingredients
                     detailsCal.text=menuItem?.calories.toString()+" Kcal"
@@ -47,6 +44,7 @@ class FragmentDetails : Fragment() {
                         binding.quantity.text=q.toString()
                     }
                     var id_item:Int=3
+
                     binding.addToCart.setOnClickListener{
                         val selectedId=binding.radioGroup.checkedRadioButtonId
                         var size:String = "Medium"
@@ -59,28 +57,33 @@ class FragmentDetails : Fragment() {
                         if(size=="Large"){
                             total+=200*q
                         }
+                        val notes=binding.cookingNotes.text.toString()
                         val order= AppDatabase.buildDatabase(requireActivity())!!.getCartDao().getCartItems()
-
+                        print("\n id of restaurant : "+menuItem.idRestaurant)
                         try{
-                            if(order.last().restaurant_id==menuItem.restaurant){
-                                id_item=order.last().id+1
+                            if(order.isEmpty()){
                                 AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.addToCart(
-                                    CartItem(id_item,menuItem.restaurant,menuItem.nomMenu,menuItem.price,menuItem.ingredients,menuItem.calories,menuItem.rating,menuItem.imgMenu,size, q, total)
+                                    CartItem(1,menuItem.idMenu,menuItem.idRestaurant,menuItem.nomMenu,menuItem.price,menuItem.ingredients,menuItem.calories,menuItem.rating,menuItem.imgMenu,size, q,notes, total)
                                 )
-                                Toast.makeText(activity,"Order added to cart", Toast.LENGTH_SHORT).show()
+                            } else{
+                                if(order.last().restaurant_id==menuItem.idRestaurant){
+                                    id_item=order.last().idItem+1
+                                    AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.addToCart(
+                                        CartItem(id_item,menuItem.idMenu,menuItem.idRestaurant,menuItem.nomMenu,menuItem.price,menuItem.ingredients,menuItem.calories,menuItem.rating,menuItem.imgMenu,size, q,notes, total)
+                                    )
+                                    Toast.makeText(activity,"Order added to cart", Toast.LENGTH_SHORT).show()
 
-                            }else {
-                                Toast.makeText(
-                                    activity,
-                                    "The orders have to be from the same restaurant!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                }else {
+                                    Toast.makeText(activity, "The orders have to be from the same restaurant!", Toast.LENGTH_SHORT).show()
+                                }
                             }
+
                         }catch(e:NoSuchElementException){
-                            id_item=1
-                            AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.addToCart(
-                                CartItem(id_item,menuItem.restaurant,menuItem.nomMenu,menuItem.price,menuItem.ingredients,menuItem.calories,menuItem.rating,menuItem.imgMenu,size, q, total)
-                            )
+                            Toast.makeText(
+                                activity,
+                                "Rana fel catch honeey",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
 
                     }
