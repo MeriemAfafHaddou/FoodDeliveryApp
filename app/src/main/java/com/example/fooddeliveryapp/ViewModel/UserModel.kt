@@ -9,7 +9,7 @@ import com.example.fooddeliveryapp.Retrofit.UserService
 import kotlinx.coroutines.*
 
 class UserModel:ViewModel() {
-    var user=MutableLiveData<Client>()
+    var user=MutableLiveData<Client?>()
     val loading = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -36,25 +36,44 @@ class UserModel:ViewModel() {
             }
         }
         }
+    //function that returns user infos in a client object
 
-    fun register(req:Client){
-        if (user.value==null){
-            loading.value=true
-            CoroutineScope(Dispatchers.IO+ exceptionHandler).launch {
+    fun register(req:Client) {
+        if (user.value == null) {
+            loading.value = true
+            CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
                 val response = UserService.createEndpoint().register(req)
                 withContext(Dispatchers.Main) {
                     loading.value = false
                     if (response.isSuccessful && response.body() != null) {
-                        user.value=response.body()
+                        user.value = response.body()
                         print(user.value)
                     } else {
-                        errorMessage.value="Une erreur s'est produite"
+                        errorMessage.value = "Une erreur s'est produite"
                     }
                 }
             }
         }
+
+        fun getUserInfos(idUser: Int) {
+            if (user.value == null) {
+                loading.value = true
+                CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+                    val response = UserService.createEndpoint().register(req)
+                    withContext(Dispatchers.Main) {
+                        loading.value = false
+                        if (response.isSuccessful && response.body() != null) {
+                            user.value = response.body()
+                            print(user.value)
+                        } else {
+                            errorMessage.value = "Une erreur s'est produite"
+                        }
+                    }
+                }
+            }
+
+        }
+
+
     }
-
-
-
 }

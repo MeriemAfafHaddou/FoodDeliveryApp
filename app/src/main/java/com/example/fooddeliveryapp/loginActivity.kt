@@ -41,7 +41,6 @@ class loginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         val btn = findViewById<Button>(R.id.login_btn)
         val pref = getSharedPreferences("userdb", Context.MODE_PRIVATE)
-//        val connected=pref.getBoolean("connected",false)
         btn.setOnClickListener{
             val email=findViewById<EditText>(R.id.email_login).text.toString()
             val pwd=findViewById<EditText>(R.id.pwd_login).text.toString()
@@ -146,4 +145,6 @@ class loginActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }

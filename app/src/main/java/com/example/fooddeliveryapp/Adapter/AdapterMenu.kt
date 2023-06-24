@@ -29,8 +29,6 @@ class AdapterMenu (var context: Context): RecyclerView.Adapter<AdapterMenu.MyVie
             menuname.text = data[position].nomMenu
             pricing.text = data[position].price.toString()
             ingredients.text = data[position].ingredients
-            cal.text = data[position].calories.toString()
-            menurating.text = data[position].rating.toString()
             Glide.with(context).load(data[position].imgMenu).into(menuimg)
         }
         val bundle=Bundle()
