@@ -1,18 +1,23 @@
 package com.example.fooddeliveryapp.Fragments
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RatingBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fooddeliveryapp.Adapter.AdapterMenu
 import com.example.fooddeliveryapp.Adapter.AdapterReview
 import com.example.fooddeliveryapp.Entity.Review
@@ -49,15 +54,89 @@ class FragmentMenu : Fragment()
             val submitbtn =view.findViewById<Button>(R.id.submitreviewbtn)
             val ratingBar=view.findViewById<RatingBar>(R.id.ratingBar2)
             val comment=view.findViewById<TextInputLayout>(R.id.reviewtext)
+            val restaurantimg=view.findViewById<ImageView>(R.id.imageView5)
+            val type=view.findViewById<TextView>(R.id.RestaurantType)
+            val address=view.findViewById<TextView>(R.id.RestaurantLocation)
+            val note=view.findViewById<TextView>(R.id.rating)
+            val nom=view.findViewById<TextView>(R.id.RestaurantNom)
+
+            val bundle=arguments
+            if (bundle != null) {
+                println(bundle)
+                val img=bundle.getString("img")
+                if (img != null) {
+                    Glide.with(requireContext()).load(img).into(restaurantimg)
+                }
+                val nomRestaurant=bundle.getString("name")
+                if (nomRestaurant != null) {
+                    nom.text=nomRestaurant
+                }
+
+                val typeRestaurant=bundle.getString("type")
+                if (typeRestaurant != null) {
+                    type.text=typeRestaurant
+                }
+                val addressRestaurant=bundle.getString("address")
+                if (addressRestaurant != null) {
+                    address.text=addressRestaurant
+                }
+                val noteRestaurant=bundle.getDouble("rating")
+                note.text=noteRestaurant.toString()
+
+            }
+
             submitbtn.setOnClickListener{
-                val rating=ratingBar.rating.toInt()
+                if (bundle != null) {
+                    println(bundle)
+                    val img=bundle.getString("img")
+                    if (img != null) {
+                        Glide.with(requireContext()).load(img).into(restaurantimg)
+                    }
+                    val nomRestaurant=bundle.getString("name")
+                    if (nomRestaurant != null) {
+                        nom.text=nomRestaurant
+                    }
+
+                    val typeRestaurant=bundle.getString("type")
+                    if (typeRestaurant != null) {
+                        type.text=typeRestaurant
+                    }
+                    val addressRestaurant=bundle.getString("address")
+                    if (addressRestaurant != null) {
+                        address.text=addressRestaurant
+                    }
+                    val noteRestaurant=bundle.getDouble("rating")
+                    note.text=noteRestaurant.toString()
+
+                }
+                val idRestaurant= bundle!!.getInt("idRestaurant")
+                val rating=ratingBar.rating.toDouble()
                 val text = comment.editText?.text
-                val idClient= userModel.user.value?.idClient
+                val pref1=context?.getSharedPreferences("userdb", Context.MODE_PRIVATE)
+                val pref = context?.getSharedPreferences("userdb", Context.MODE_PRIVATE)
+                val idClient=pref1?.getInt("id",0)
+                val nomClient=pref1?.getString("name","").toString()
+                val connected= pref?.getBoolean("connected",false)
+                println("connect{$connected}")
+                if(connected==true){
+                    if (idClient != null) {
+                        if (text != null) {
+                            if(rating!=null){
+                                val review=Review(nomClient,idRestaurant,idClient,text.toString(),rating)
+                                restaurantsModel.rateRestaurant(review)
+                                Toast.makeText(context,"Review added ! ", Toast.LENGTH_LONG).show()
+                        }}
+                    }
+                }else{
+                    this.findNavController().navigate(R.id.action_fragment2_to_login)
+                    Toast.makeText(context,"You have to be connected ! ", Toast.LENGTH_LONG).show()
+                }
+            }
                
 
 
 
-            }
+
 
 
 

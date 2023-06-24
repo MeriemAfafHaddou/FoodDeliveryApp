@@ -49,6 +49,14 @@ class AdapterRestaurant(var context: Context):RecyclerView.Adapter<AdapterRestau
         }
         val bundle= Bundle()
         bundle.putInt("idRestaurant",data[position].idRestaurant)
+        bundle.putString("img",data[position].img)
+        bundle.putString("address",data[position].address)
+        bundle.putString("name",data[position].nom)
+        bundle.putDouble("rating",data[position].rating)
+        bundle.putString("type",data[position].type)
+
+
+
         holder.binding.root.setOnClickListener{
             it.findNavController().navigate(R.id.action_Restaurant_to_menu, bundle)
         }

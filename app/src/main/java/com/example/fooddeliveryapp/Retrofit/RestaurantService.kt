@@ -27,8 +27,8 @@ interface RestaurantService {
     @GET("restaurants/{id}/ratings")
     suspend fun getReviewsByRestaurant(@Path("id") id: Int): Response<List<Review>>
 
-    @POST("restaurants/{id}/ratings")
-    suspend fun rateRestaurant(@Path("id") id: Int, @Body review: Review)
+    @POST("restaurants/ratings")
+    suspend fun rateRestaurant( @Body review: Review):Response<String>
 
 
     companion object {

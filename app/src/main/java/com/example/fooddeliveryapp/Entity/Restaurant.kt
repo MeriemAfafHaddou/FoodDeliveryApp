@@ -2,7 +2,7 @@ package com.example.fooddeliveryapp.Entity
 data class Restaurant(
     val idRestaurant: Int,
     val nom: String,
-   // val type: String,
+    val type: String,
     val img: String,
     val address: String,
     val mapWeb: String,
