@@ -32,8 +32,7 @@ class registerActivity : AppCompatActivity() {
                 val email = findViewById<EditText>(R.id.email).text.toString()
                 val pwd = findViewById<EditText>(R.id.pwd).text.toString()
                 val numTlf = findViewById<EditText>(R.id.phoneNum).text.toString()
-                val pic = findViewById<EditText>(R.id.profilePicLink).text.toString()
-                val new = Client(200, first, last, email, pwd, numTlf, pic)
+                val new = Client(200, first, last, email, pwd, numTlf, "client")
 
                 userModel = ViewModelProvider(this).get(UserModel::class.java)
                 userModel.register(new)
