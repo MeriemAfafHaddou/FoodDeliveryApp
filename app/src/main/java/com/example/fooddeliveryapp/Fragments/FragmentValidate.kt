@@ -51,7 +51,7 @@ class FragmentValidate : Fragment() {
             val commande=Commande(
                 id,
                 prix,
-                30,
+                1,
                 binding.deliveryAddress.text.toString(),
                 binding.deliveryNote.text.toString(),
                 1,
