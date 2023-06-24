@@ -38,6 +38,7 @@ class FragmentCart : Fragment() {
                 it,requireContext())
         }
 
+
         var subtotal:Int=0
         val list=AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.getCartItems()
         if (list != null) {

@@ -1,4 +1,5 @@
 package com.example.fooddeliveryapp.ViewModel
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -73,7 +74,6 @@ class RestaurantModel: ViewModel() {
 
     fun loadReviews(idRestaurant:Int) {
 
-        if (review.value==null){
             loading.value=true
             CoroutineScope(Dispatchers.IO+ exceptionHandler).launch {
                 val response = RestaurantService.createEndpoint().getReviewsByRestaurant(idRestaurant)
@@ -86,7 +86,24 @@ class RestaurantModel: ViewModel() {
                     }
                 }
             }
+
+    }
+    fun rateRestaurant(review: Review) {
+
+        loading.value = true
+        CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = RestaurantService.createEndpoint().rateRestaurant(review)
+            withContext(Dispatchers.Main) {
+                loading.value = false
+                if (response.isSuccessful && response.body() != null) {
+                    errorMessage.value = response.body()
+                } else {
+                    errorMessage.value = response.message()
+                }
+            }
         }
+
+
     }
 
 }

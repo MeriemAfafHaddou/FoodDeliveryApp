@@ -39,8 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/cairo"
         android:text="Subtotal"
-        android:textColor="#040404"
+        android:textColor="#282828"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewCart" />
 
@@ -48,7 +50,12 @@
         android:id="@+id/subtotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/cairo"
         android:text=""
+        android:textColor="#282828"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView20"
         app:layout_constraintEnd_toStartOf="@+id/textView20"
         app:layout_constraintTop_toTopOf="@+id/textView16" />
 
@@ -57,8 +64,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/cairo"
         android:text="Delivery Fees"
-        android:textColor="#000000"
+        android:textColor="#282828"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -66,7 +75,11 @@
         android:id="@+id/fees"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo"
         android:text="300 DA"
+        android:textColor="#282828"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
         app:layout_constraintEnd_toEndOf="@+id/textView20"
         app:layout_constraintTop_toTopOf="@+id/textView19" />
 
@@ -75,8 +88,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/cairo_semibold"
         android:text="Total"
-        android:textColor="#0B0B0B"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -84,7 +99,12 @@
         android:id="@+id/prixTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/cairo_semibold"
         android:text=""
+        android:textColor="#FB8500"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView17"
         app:layout_constraintEnd_toStartOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="@+id/textView21" />
 
@@ -92,16 +112,24 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
         android:text=" DA"
+        android:textColor="#FB8500"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
         app:layout_constraintEnd_toEndOf="@+id/fees"
-        app:layout_constraintTop_toTopOf="@+id/prixTotal" />
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/cairo"
         android:text=" DA"
+        android:textColor="#282828"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView16" />
 </androidx.constraintlayout.widget.ConstraintLayout>

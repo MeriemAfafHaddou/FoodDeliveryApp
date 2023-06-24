@@ -29,8 +29,6 @@ class FragmentDetails : Fragment() {
                 binding.apply {
                     detailsName.text=menuItem?.nomMenu
                     detailsIngreds.text=menuItem?.ingredients
-                    detailsCal.text=menuItem?.calories.toString()+" Kcal"
-                    detailsRating.text=menuItem?.rating.toString()
                     val add=binding.add
                     val sub=binding.sub
                     var q:Int=1
