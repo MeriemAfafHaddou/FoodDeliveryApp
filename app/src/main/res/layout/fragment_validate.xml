@@ -9,27 +9,26 @@
 
     <EditText
         android:id="@+id/deliveryAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <EditText
         android:id="@+id/deliveryNote"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Delivery Notes"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deliveryAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <Button
         android:id="@+id/validate"
@@ -54,4 +53,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/deliveryAddress"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Delivery Notes"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/deliveryAddress"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryAddress" />
 </androidx.constraintlayout.widget.ConstraintLayout>

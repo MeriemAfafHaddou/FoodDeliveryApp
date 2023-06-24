@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.fooddeliveryapp.ViewModel.RestaurantModel
 import com.example.fooddeliveryapp.databinding.FragmentDeliveryEndBinding
+import com.example.fooddeliveryapp.sendEmail
 import com.example.fooddeliveryapp.startCall
 
 class FragmentDelivery : Fragment() {
@@ -36,6 +37,9 @@ class FragmentDelivery : Fragment() {
             }
         }
         binding.messageDelivery.setOnClickListener {
+            if (person != null) {
+                sendEmail(requireContext(), person.email)
+            }
 
         }
     }

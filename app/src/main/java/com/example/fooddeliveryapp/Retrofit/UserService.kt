@@ -26,7 +26,7 @@ interface UserService {
         fun createEndpoint(): UserService {
             if(endpoint ==null) {
                 synchronized(this) {
-                    endpoint = Retrofit.Builder().baseUrl("http://192.168.42.26:4000")
+                    endpoint = Retrofit.Builder().baseUrl("http://192.168.42.114:4000")
                         .addConverterFactory(GsonConverterFactory.create()).build()
                         .create(UserService::class.java)
                 }

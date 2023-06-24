@@ -73,7 +73,7 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/borderradius"
-        android:text="Message"
+        android:text="Email"
         android:textColor="#FFB703"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -20,9 +20,6 @@ interface RestaurantService {
     @GET("restaurants/{id}")
     suspend fun getMenuByRestaurant(@Path("id") id: Int): Response<List<Menu>>
 
-    @GET("restaurants/menu/{id}")
-    suspend fun getMenuDetails(@Path("id") id: Int): Response<Menu>
-
     @POST("order/validate")
     suspend fun validateCommand(@Body command: Commande): Response<DeliveryPerson>
 
@@ -32,7 +29,7 @@ interface RestaurantService {
         fun createEndpoint(): RestaurantService {
             if(endpoint ==null) {
                 synchronized(this) {
-                    endpoint = Retrofit.Builder().baseUrl("http://192.168.42.26:4000")
+                    endpoint = Retrofit.Builder().baseUrl("http://192.168.42.114:4000")
                         .addConverterFactory(GsonConverterFactory.create()).build()
                         .create(RestaurantService::class.java)
                 }
