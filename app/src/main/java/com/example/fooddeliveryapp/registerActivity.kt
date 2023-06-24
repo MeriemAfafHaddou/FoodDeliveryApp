@@ -12,7 +12,7 @@ class registerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         val add = findViewById<Button>(R.id.register_btn)
-        var id:Long=4
+        var id:Int=4
         add.setOnClickListener{
             id += 1
             val name= findViewById<EditText>(R.id.fullName).text.toString()

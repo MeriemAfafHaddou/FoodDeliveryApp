@@ -28,8 +28,8 @@ class loginActivity : AppCompatActivity() {
             val pwd=findViewById<EditText>(R.id.pwd_login).text.toString()
             userModel= ViewModelProvider(this).get(UserModel::class.java)
             userModel.login(email, pwd)
+
             val user=userModel.user.value
-            println(user?.nomClient)
             if(user!=null){
                 pref.edit {
                     putBoolean("connected",true)
@@ -54,4 +54,6 @@ class loginActivity : AppCompatActivity() {
         }
 
     }
+
+
 }

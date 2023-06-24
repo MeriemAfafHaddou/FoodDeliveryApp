@@ -24,7 +24,7 @@ interface UserService {
         fun createEndpoint(): UserService {
             if(endpoint ==null) {
                 synchronized(this) {
-                    endpoint = Retrofit.Builder().baseUrl("https://food-delivery-service.onrender.com")
+                    endpoint = Retrofit.Builder().baseUrl("https://instant-delivery.onrender.com")
                         .addConverterFactory(GsonConverterFactory.create()).build()
                         .create(UserService::class.java)
                 }

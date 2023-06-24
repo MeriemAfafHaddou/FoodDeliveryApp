@@ -3,6 +3,7 @@ package com.example.fooddeliveryapp.Retrofit
 import com.example.fooddeliveryapp.Entity.Commande
 import com.example.fooddeliveryapp.Entity.Menu
 import com.example.fooddeliveryapp.Entity.Restaurant
+import com.example.fooddeliveryapp.Entity.Review
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,6 +22,10 @@ interface RestaurantService {
 
     @GET("restaurants/menu/{id}")
     suspend fun getMenuDetails(@Path("id") id: Int): Response<Menu>
+    @GET("restaurants/{id}/ratings")
+    suspend fun getReviewsByRestaurant(@Path("id") id: Int): Response<List<Review>>
+    @POST("restaurants/{id}/ratings")
+    suspend fun rateRestaurant(@Path("id") id: Int, @Body review: Review)
 
     @POST("")
     suspend fun validateCommand(@Body command: Commande)
@@ -31,7 +36,7 @@ interface RestaurantService {
         fun createEndpoint(): RestaurantService {
             if(endpoint ==null) {
                 synchronized(this) {
-                    endpoint = Retrofit.Builder().baseUrl("https://food-delivery-service.onrender.com")
+                    endpoint = Retrofit.Builder().baseUrl("https://instant-delivery.onrender.com")
                         .addConverterFactory(GsonConverterFactory.create()).build()
                         .create(RestaurantService::class.java)
                 }

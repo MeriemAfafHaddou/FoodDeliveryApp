@@ -8,7 +8,7 @@ import com.example.fooddeliveryapp.Retrofit.UserService
 import kotlinx.coroutines.*
 
 class UserModel:ViewModel() {
-    var user=MutableLiveData<Client>()
+    var user=MutableLiveData<Client?>()
     val loading = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -34,8 +34,10 @@ class UserModel:ViewModel() {
             }
         }
         }
+    //function that returns user infos in a client object
 
-    fun getUserInfos(idUser:Int){
+
+    fun getUserInfos(idUser:Int)  {
         if (user.value==null){
             loading.value = true
             CoroutineScope(Dispatchers.IO+ exceptionHandler).launch {
@@ -50,7 +52,9 @@ class UserModel:ViewModel() {
                 }
             }
         }
+
     }
+
 
 
 }
