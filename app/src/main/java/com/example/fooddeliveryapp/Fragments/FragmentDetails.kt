@@ -72,7 +72,6 @@ class FragmentDetails : Fragment() {
                                         CartItem(id_item,menuItem.idMenu,menuItem.idRestaurant,menuItem.nomMenu,menuItem.price,menuItem.ingredients,menuItem.calories,menuItem.rating,menuItem.imgMenu,size, q,notes, total)
                                     )
                                     Toast.makeText(activity,"Order added to cart", Toast.LENGTH_SHORT).show()
-
                                 }else {
                                     Toast.makeText(activity, "The orders have to be from the same restaurant!", Toast.LENGTH_SHORT).show()
                                 }

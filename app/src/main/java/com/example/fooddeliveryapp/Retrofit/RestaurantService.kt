@@ -30,21 +30,20 @@ interface RestaurantService {
     @POST("restaurants/{id}/ratings")
     suspend fun rateRestaurant(@Path("id") id: Int, @Body review: Review)
 
-
     companion object {
-        @Volatile
-        var endpoint: RestaurantService? = null
+        private var endpoint: RestaurantService? = null
         fun createEndpoint(): RestaurantService {
             if(endpoint ==null) {
                 synchronized(this) {
                     endpoint = Retrofit.Builder().baseUrl("https://instant-delivery.onrender.com")
                         .addConverterFactory(GsonConverterFactory.create()).build()
                         .create(RestaurantService::class.java)
+
                 }
             }
             return endpoint!!
-
         }
+
 
 
     }

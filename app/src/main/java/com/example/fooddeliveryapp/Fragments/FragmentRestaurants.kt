@@ -1,20 +1,24 @@
 package com.example.fooddeliveryapp.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddeliveryapp.Adapter.AdapterRestaurant
+
+import com.example.fooddeliveryapp.Entity.Restaurant
 import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.ViewModel.RestaurantModel
-
+import kotlinx.coroutines.*
 
 class FragmentRestaurants : Fragment() {
     lateinit var recyclerView:RecyclerView
@@ -62,4 +66,8 @@ class FragmentRestaurants : Fragment() {
             adapter.setRestaurants(data)
         }
     }
+
+
 }
+
+

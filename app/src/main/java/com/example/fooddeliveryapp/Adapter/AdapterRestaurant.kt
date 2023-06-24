@@ -27,16 +27,16 @@ class AdapterRestaurant(var context: Context):RecyclerView.Adapter<AdapterRestau
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
             name.text = data[position].nom
-           // type.text = data[position].type
+
+            type.text = data[position].type
+            img.setImageResource(R.drawable.megapizza)
             address.text=data[position].address
             ratingValue.text=data[position].rating.toString()
             fb.setOnClickListener {
-              //open facebook web page
                 openPage(context,data[position].fb,data[position].fbWeb)
             }
             map.setOnClickListener{
-            openPage(context,data[position].map,data[position].mapWeb)
-
+                openPage(context,data[position].map,data[position].mapWeb)
             }
 
             phone.setOnClickListener{

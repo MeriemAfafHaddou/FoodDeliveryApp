@@ -1,0 +1,37 @@
+{
+	"dataList":[
+		{
+			"hostGroup":[
+				{
+					"env":"https://192.168.56.1:4000/restaurants",
+					"url":""
+				}
+			],
+			"name":"Food-deliver-frontend"
+		}
+	],
+	"envList":[
+		"https://192.168.56.1:4000/restaurants"
+	],
+	"headerList":[],
+	"postScript":"",
+	"preScript":"",
+	"projectList":[
+		"Food-deliver-frontend"
+	],
+	"syncModel":{
+		"branch":"master",
+		"domain":"https://github.com",
+		"enabled":false,
+		"namingPolicy":"byDoc",
+		"owner":"",
+		"repo":"",
+		"repoUrl":"",
+		"syncAfterRun":false,
+		"token":"",
+		"type":"github"
+	},
+	"urlEncodedKeyValueList":[],
+	"urlParamsKeyValueList":[],
+	"urlSuffix":""
+}
