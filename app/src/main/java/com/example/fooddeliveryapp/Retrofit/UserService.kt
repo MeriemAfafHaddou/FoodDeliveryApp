@@ -20,6 +20,9 @@ interface UserService {
     @POST("users/register")
     suspend fun register(@Body client: Client): Response<Client>
 
+    @GET("users/{id}")
+    suspend fun getUserInfos(@Path("id") id: Int): Response<Client>
+
     companion object {
         @Volatile
         var endpoint: UserService? = null

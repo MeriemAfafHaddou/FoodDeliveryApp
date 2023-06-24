@@ -54,26 +54,22 @@ class UserModel:ViewModel() {
                 }
             }
         }
+    }
 
-        fun getUserInfos(idUser: Int) {
-            if (user.value == null) {
-                loading.value = true
-                CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-                    val response = UserService.createEndpoint().register(req)
-                    withContext(Dispatchers.Main) {
-                        loading.value = false
-                        if (response.isSuccessful && response.body() != null) {
-                            user.value = response.body()
-                            print(user.value)
-                        } else {
-                            errorMessage.value = "Une erreur s'est produite"
-                        }
+    fun getUserInfos(idUser:Int)  {
+        if (user.value==null){
+            loading.value = true
+            CoroutineScope(Dispatchers.IO+ exceptionHandler).launch {
+                val response = UserService.createEndpoint().getUserInfos(idUser)
+                withContext(Dispatchers.Main) {
+                    loading.value = false
+                    if (response.isSuccessful && response.body() != null) {
+                        user.value=response.body()
+                    } else {
+                        errorMessage.value="Une erreur s'est produite"
                     }
                 }
             }
-
         }
-
-
     }
 }
