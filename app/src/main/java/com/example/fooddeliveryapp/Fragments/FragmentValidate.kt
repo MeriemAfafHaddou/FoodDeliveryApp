@@ -44,8 +44,6 @@ class FragmentValidate : Fragment() {
         restaurantModel=ViewModelProvider(requireActivity()).get(RestaurantModel::class.java)
         val prix=arguments?.getInt("total")
         val validate=view.findViewById<Button>(R.id.validate)
-        val address=view.findViewById<EditText>(R.id.deliveryAddress)
-
             validate.setOnClickListener {
             val orders= AppDatabase.buildDatabase(requireActivity())!!.getCartDao().getCartItems()
             val pref = context?.getSharedPreferences("userdb", Context.MODE_PRIVATE)

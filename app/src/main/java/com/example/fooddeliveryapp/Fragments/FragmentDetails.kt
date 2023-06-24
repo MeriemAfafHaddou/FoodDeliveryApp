@@ -63,6 +63,7 @@ class FragmentDetails : Fragment() {
                                 AppDatabase.buildDatabase(requireActivity())?.getCartDao()?.addToCart(
                                     CartItem(1,menuItem.idMenu,menuItem.idRestaurant,menuItem.nomMenu,menuItem.price,menuItem.ingredients,menuItem.calories,menuItem.rating,menuItem.imgMenu,size, q,notes, total)
                                 )
+                                Toast.makeText(activity,"Order added to cart", Toast.LENGTH_SHORT).show()
                             } else{
                                 if(order.last().restaurant_id==menuItem.idRestaurant){
                                     id_item=order.last().idItem+1
