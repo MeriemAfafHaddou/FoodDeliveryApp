@@ -59,7 +59,6 @@ class FragmentValidate : Fragment() {
             "not validated"
         )
         restaurantModel.validateCommand(commande)
-        idCommande+=1
         restaurantModel.errorMessage.observe(
             requireActivity()
         ) { errorMessaage ->
