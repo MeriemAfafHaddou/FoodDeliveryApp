@@ -58,6 +58,7 @@ class loginActivity : AppCompatActivity() {
             userModel.user.observe(this
             ) { data ->
                 findViewById<TextView>(R.id.nameProfile).text=user?.PrenomClient
+
             }
             if(user!=null){
                 pref.edit {

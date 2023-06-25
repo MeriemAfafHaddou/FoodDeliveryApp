@@ -13,11 +13,11 @@
         android:id="@+id/view2"
         android:layout_width="300dp"
         android:layout_height="2dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:background="#FB8500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageDelivery"
@@ -76,10 +76,12 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageDelivery"
         app:layout_constraintStart_toStartOf="@+id/deliveryName" />
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="0dp"
-        android:layout_height="400dp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/delivery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

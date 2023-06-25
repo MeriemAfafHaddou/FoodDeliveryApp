@@ -29,6 +29,7 @@ class FragmentValidate : Fragment() {
     lateinit var binding: FragmentValidateBinding
     lateinit var restaurantModel: RestaurantModel
     private lateinit var locationManager: LocationManager
+    var idCommande=1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,32 +44,32 @@ class FragmentValidate : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         restaurantModel=ViewModelProvider(requireActivity()).get(RestaurantModel::class.java)
         val prix=arguments?.getInt("total")
-        val validate=view.findViewById<Button>(R.id.validate)
-            validate.setOnClickListener {
-            val orders= AppDatabase.buildDatabase(requireActivity())!!.getCartDao().getCartItems()
-            val pref = context?.getSharedPreferences("userdb", Context.MODE_PRIVATE)
-            val id=pref?.getInt("id",0)
-            val commande=Commande(
-                id,
-                prix,
-                1,
-                binding.deliveryAddress.text.toString(),
-                binding.deliveryNote.text.toString(),
-                1,
-                orders
-            )
-            restaurantModel.validateCommand(commande)
+        binding.validate.setOnClickListener {
+        val orders= AppDatabase.buildDatabase(requireActivity())!!.getCartDao().getCartItems()
+        val pref = context?.getSharedPreferences("userdb", Context.MODE_PRIVATE)
+        val id=pref?.getInt("id",0)
+        val commande=Commande(
+            id,
+            prix,
+            idCommande,
+            binding.deliveryAddress.text.toString(),
+            binding.deliveryNote.text.toString(),
+            1,
+            orders,
+            "not validated"
+        )
+        restaurantModel.validateCommand(commande)
+        idCommande+=1
+        restaurantModel.errorMessage.observe(
+            requireActivity()
+        ) { errorMessaage ->
+            Toast.makeText(requireContext(), errorMessaage, Toast.LENGTH_SHORT).show()
+        }
 
-            restaurantModel.errorMessage.observe(
-                requireActivity()
-            ) { errorMessaage ->
-                Toast.makeText(requireContext(), errorMessaage, Toast.LENGTH_SHORT).show()
-            }
-
-            restaurantModel.person.observe(requireActivity()
-            ) {
-                this.findNavController().navigate(R.id.action_fragmentValidate_to_fragmentDelivery)
-            }
+        restaurantModel.person.observe(requireActivity()
+        ) {
+            this.findNavController().navigate(R.id.action_fragmentValidate_to_fragmentDelivery)
+        }
         }
     }
 }
